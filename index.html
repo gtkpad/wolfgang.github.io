@@ -9,7 +9,7 @@
 <link href="getting-started/" rel="next"/>
 <link href="/" hreflang="pt-BR" rel="alternate"/>
 <link href="/en/" hreflang="en" rel="alternate"/>
-<link href="assets/logo.png" rel="icon"/>
+<link href="assets/logo.svg" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
 <title>Wolfgang C2 Framework</title>
 <link href="assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
@@ -17,6 +17,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="assets/extra.css" rel="stylesheet"/>
 <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 </head>
 <body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
@@ -24,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#wolfgang-c2-framework">
+<a class="md-skip" href="#visao-geral-da-arquitetura">
           Pular para conteúdo
         </a>
 </div>
@@ -33,7 +34,7 @@
 <header class="md-header" data-md-component="header">
 <nav aria-label="Cabeçalho" class="md-header__inner md-grid">
 <a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="." title="Wolfgang C2 Framework">
-<img alt="logo" src="assets/logo.png"/>
+<img alt="logo" src="assets/logo.svg"/>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
@@ -222,7 +223,7 @@
 <nav aria-label="Navegação" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
 <a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="." title="Wolfgang C2 Framework">
-<img alt="logo" src="assets/logo.png"/>
+<img alt="logo" src="assets/logo.svg"/>
 </a>
     Wolfgang C2 Framework
   </label>
@@ -1446,8 +1447,15 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="wolfgang-c2-framework">Wolfgang C2 Framework<a class="headerlink" href="#wolfgang-c2-framework" title="Permanent link">¶</a></h1>
-<p>Wolfgang é um framework modular de Comando e Controle (C2) escrito em Go, projetado para operações autorizadas de red team e simulação adversarial. Ele fornece um teamserver, cliente CLI interativo e implants multiplataforma com comunicação criptografada, transportes plugáveis e um sistema abrangente de módulos.</p>
+<div class="wf-hero">
+<div class="wf-hero-logo">
+<img alt="Wolfgang C2" src="assets/logo.svg"/>
+</div>
+<div class="wf-hero-content">
+<h1 class="wf-hero-title">Wolfgang C2 Framework</h1>
+<p>Framework modular de Comando e Controle (C2) escrito em Go, projetado para operações autorizadas de red team e simulação adversarial. Teamserver multi-operador, implants multiplataforma, transportes plugáveis e criptografia ponta a ponta.</p>
+</div>
+</div>
 <h2 id="visao-geral-da-arquitetura">Visão Geral da Arquitetura<a class="headerlink" href="#visao-geral-da-arquitetura" title="Permanent link">¶</a></h2>
 <pre class="mermaid"><code>graph LR
     subgraph Operador
