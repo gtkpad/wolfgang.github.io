@@ -1,0 +1,2380 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for the Wolfgang C2 Framework" name="description"/>
+<link href="../modules/" rel="prev"/>
+<link href="../auth/" rel="next"/>
+<link href="../../../architecture/storage/" hreflang="pt-BR" rel="alternate"/>
+<link href="./" hreflang="en" rel="alternate"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
+<title>Storage - Wolfgang C2 Framework</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#armazenamento">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Wolfgang C2 Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Storage
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../../../architecture/storage/" hreflang="pt-BR">
+              Português
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="en">
+              English
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../getting-started/">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../operator-guide/">
+          
+  
+  
+    
+  
+  Operator Guide
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer-guide/">
+          
+  
+  
+    
+  
+  Developer Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tradecraft/">
+          
+  
+  
+    
+  
+  Tradecraft
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../modules/">
+          
+  
+  
+    
+  
+  Module Catalog
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../api/">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Wolfgang C2 Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/quickstart/">
+<span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/first-implant/">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/first-operation/">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/next-steps/">
+<span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../operator-guide/">
+<span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operator Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/server-setup/">
+<span class="md-ellipsis">
+    
+  
+    Server Setup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/listeners/">
+<span class="md-ellipsis">
+    
+  
+    Listeners
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/implant-generation/">
+<span class="md-ellipsis">
+    
+  
+    Implant Generation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/cli-reference/">
+<span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/agent-management/">
+<span class="md-ellipsis">
+    
+  
+    Agent Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/task-system/">
+<span class="md-ellipsis">
+    
+  
+    Task System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/exfiltration/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/redirectors/">
+<span class="md-ellipsis">
+    
+  
+    Redirectors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../protocol/">
+<span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../crypto/">
+<span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../transport/">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracao-do-sqlite">
+<span class="md-ellipsis">
+      
+        Configuracao do SQLite
+      
+    </span>
+</a>
+<nav aria-label="Configuracao do SQLite" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wal-mode-write-ahead-logging">
+<span class="md-ellipsis">
+      
+        WAL Mode (Write-Ahead Logging)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#foreign-keys">
+<span class="md-ellipsis">
+      
+        Foreign Keys
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-completo">
+<span class="md-ellipsis">
+      
+        Schema Completo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tabelas-em-detalhe">
+<span class="md-ellipsis">
+      
+        Tabelas em Detalhe
+      
+    </span>
+</a>
+<nav aria-label="Tabelas em Detalhe" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#operators">
+<span class="md-ellipsis">
+      
+        operators
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#agents">
+<span class="md-ellipsis">
+      
+        agents
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tasks">
+<span class="md-ellipsis">
+      
+        tasks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#listeners">
+<span class="md-ellipsis">
+      
+        listeners
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#logs-audit-log">
+<span class="md-ellipsis">
+      
+        logs (Audit Log)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#refresh_tokens">
+<span class="md-ellipsis">
+      
+        refresh_tokens
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#staging_tokens">
+<span class="md-ellipsis">
+      
+        staging_tokens
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exfiltrations-exfil_chunks">
+<span class="md-ellipsis">
+      
+        exfiltrations + exfil_chunks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modules">
+<span class="md-ellipsis">
+      
+        modules
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema_version">
+<span class="md-ellipsis">
+      
+        schema_version
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sistema-de-migrations">
+<span class="md-ellipsis">
+      
+        Sistema de Migrations
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#padroes-de-query">
+<span class="md-ellipsis">
+      
+        Padroes de Query
+      
+    </span>
+</a>
+<nav aria-label="Padroes de Query" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#prepared-statements">
+<span class="md-ellipsis">
+      
+        Prepared Statements
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#id-generation">
+<span class="md-ellipsis">
+      
+        ID Generation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#transacoes">
+<span class="md-ellipsis">
+      
+        Transacoes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#time-handling">
+<span class="md-ellipsis">
+      
+        Time Handling
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backup-e-recovery">
+<span class="md-ellipsis">
+      
+        Backup e Recovery
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veja-tambem">
+<span class="md-ellipsis">
+      
+        Veja tambem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../auth/">
+<span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implant-internals/">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../developer-guide/">
+<span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/project-structure/">
+<span class="md-ellipsis">
+    
+  
+    Project Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-modules/">
+<span class="md-ellipsis">
+    
+  
+    Adding Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-transports/">
+<span class="md-ellipsis">
+    
+  
+    Adding Transports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/plugin-sdk/">
+<span class="md-ellipsis">
+    
+  
+    Plugin SDK
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/testing/">
+<span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/build-system/">
+<span class="md-ellipsis">
+    
+  
+    Build System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/">
+<span class="md-ellipsis">
+    
+  
+    Tradecraft
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradecraft
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Evasion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/amsi-bypass/">
+<span class="md-ellipsis">
+    
+  
+    AMSI Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/etw-bypass/">
+<span class="md-ellipsis">
+    
+  
+    ETW Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sandbox-detection/">
+<span class="md-ellipsis">
+    
+  
+    Sandbox Detection
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sleep-obfuscation/">
+<span class="md-ellipsis">
+    
+  
+    Sleep Obfuscation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/direct-syscalls/">
+<span class="md-ellipsis">
+    
+  
+    Direct Syscalls
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/memory-encryption/">
+<span class="md-ellipsis">
+    
+  
+    Memory Encryption
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/hwbp-bypass/">
+<span class="md-ellipsis">
+    
+  
+    HWBP Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/injection/">
+<span class="md-ellipsis">
+    
+  
+    Injection
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Injection
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/process-hollowing/">
+<span class="md-ellipsis">
+    
+  
+    Process Hollowing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/earlybird-apc/">
+<span class="md-ellipsis">
+    
+  
+    EarlyBird APC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/module-stomping/">
+<span class="md-ellipsis">
+    
+  
+    Module Stomping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/reflective-loading/">
+<span class="md-ellipsis">
+    
+  
+    Reflective Loading
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/credential-access/">
+<span class="md-ellipsis">
+    
+  
+    Credential Access
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Credential Access
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/lsass-dumping/">
+<span class="md-ellipsis">
+    
+  
+    LSASS Dumping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/registry-hives/">
+<span class="md-ellipsis">
+    
+  
+    Registry Hives
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/kerberoasting/">
+<span class="md-ellipsis">
+    
+  
+    Kerberoasting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/vault-extraction/">
+<span class="md-ellipsis">
+    
+  
+    Vault Extraction
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/persistence/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Persistence
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/windows-registry/">
+<span class="md-ellipsis">
+    
+  
+    Windows Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/scheduled-tasks/">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/linux-cron/">
+<span class="md-ellipsis">
+    
+  
+    Linux Cron
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/macos-launchd/">
+<span class="md-ellipsis">
+    
+  
+    macOS Launchd
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lateral Movement
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/port-forwarding/">
+<span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/socks-proxy/">
+<span class="md-ellipsis">
+    
+  
+    SOCKS Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/pivot-chains/">
+<span class="md-ellipsis">
+    
+  
+    Pivot Chains
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/remote-execution/">
+<span class="md-ellipsis">
+    
+  
+    Remote Execution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../modules/">
+<span class="md-ellipsis">
+    
+  
+    Module Catalog
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Module Catalog
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/shell/">
+<span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/fileops/">
+<span class="md-ellipsis">
+    
+  
+    File Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/recon/">
+<span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/persist/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/lateral/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/credential/">
+<span class="md-ellipsis">
+    
+  
+    Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/exfil/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../api/">
+<span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="armazenamento">Armazenamento<a class="headerlink" href="#armazenamento" title="Permanent link">¶</a></h1>
+<p>O Wolfgang usa SQLite como unico backend de persistencia. Toda informacao do teamserver — operadores, agents, tasks, listeners, tokens, exfiltracoes, logs e modulos — vive em um unico arquivo <code>.db</code>.</p>
+<h2 id="configuracao-do-sqlite">Configuracao do SQLite<a class="headerlink" href="#configuracao-do-sqlite" title="Permanent link">¶</a></h2>
+<p>A inicializacao do banco aplica duas PRAGMAs criticas antes de qualquer operacao:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// pkg/storage/storage.go</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">New</span><span class="p">(</span><span class="nx">dbPath</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Store</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="s">"sqlite"</span><span class="p">,</span><span class="w"> </span><span class="nx">dbPath</span><span class="p">)</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="c1">// WAL mode: leituras concorrentes sem bloquear escritas</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"PRAGMA journal_mode=WAL"</span><span class="p">)</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="c1">// Foreign keys: integridade referencial entre tabelas</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"PRAGMA foreign_keys=ON"</span><span class="p">)</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Store</span><span class="p">{</span><span class="nx">db</span><span class="p">:</span><span class="w"> </span><span class="nx">db</span><span class="p">}</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">migrate</span><span class="p">()</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="wal-mode-write-ahead-logging">WAL Mode (Write-Ahead Logging)<a class="headerlink" href="#wal-mode-write-ahead-logging" title="Permanent link">¶</a></h3>
+<p>No modo WAL, escritas vao para um arquivo separado (<code>*.db-wal</code>) e leituras continuam no banco principal. Isso significa:</p>
+<ul>
+<li><strong>Multiplas goroutines podem ler simultaneamente</strong> enquanto uma escreve</li>
+<li><strong>Leituras nunca bloqueiam escritas</strong> e vice-versa</li>
+<li>Performance muito melhor que o default (rollback journal) para o padrao de uso do C2 (muitas leituras, poucas escritas)</li>
+</ul>
+<h3 id="foreign-keys">Foreign Keys<a class="headerlink" href="#foreign-keys" title="Permanent link">¶</a></h3>
+<p>Foreign keys estao habilitadas para garantir integridade referencial:</p>
+<ul>
+<li>Tasks referenciam <code>agents(id)</code> e <code>operators(id)</code></li>
+<li>Exfil chunks referenciam <code>exfiltrations(id)</code></li>
+<li>Refresh tokens referenciam <code>operators(id)</code></li>
+</ul>
+<p>Tentativas de criar tasks para agents inexistentes falham com erro de FK.</p>
+<h2 id="schema-completo">Schema Completo<a class="headerlink" href="#schema-completo" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>erDiagram
+    operators {
+        TEXT id PK
+        TEXT username UK
+        TEXT password_hash
+        TEXT role
+        DATETIME created_at
+    }
+
+    agents {
+        TEXT id PK
+        TEXT hostname
+        TEXT os
+        TEXT arch
+        TEXT username
+        TEXT internal_ip
+        TEXT external_ip
+        DATETIME last_seen
+        INTEGER sleep
+        INTEGER jitter
+        TEXT transport
+        TEXT status
+        TEXT session_key
+        TEXT tags
+    }
+
+    tasks {
+        TEXT id PK
+        TEXT agent_id FK
+        TEXT operator_id FK
+        TEXT module
+        TEXT args
+        TEXT status
+        TEXT result
+        DATETIME created_at
+        DATETIME completed_at
+    }
+
+    listeners {
+        TEXT id PK
+        TEXT type
+        TEXT bind_addr
+        INTEGER port
+        TEXT profile
+        TEXT status
+    }
+
+    logs {
+        INTEGER id PK
+        TEXT operator_id
+        TEXT action
+        TEXT details
+        DATETIME timestamp
+    }
+
+    refresh_tokens {
+        TEXT token_hash PK
+        TEXT operator_id FK
+        DATETIME expires_at
+        INTEGER revoked
+        DATETIME created_at
+    }
+
+    staging_tokens {
+        TEXT token PK
+        BLOB encrypted_payload
+        DATETIME created_at
+        INTEGER used
+    }
+
+    exfiltrations {
+        TEXT id PK
+        TEXT agent_id FK
+        TEXT filename
+        INTEGER total_chunks
+        INTEGER received_chunks
+        INTEGER total_bytes
+        TEXT sha256_expected
+        TEXT sha256_actual
+        TEXT status
+        DATETIME created_at
+        DATETIME completed_at
+    }
+
+    exfil_chunks {
+        TEXT session_id FK
+        INTEGER chunk_index
+        BLOB data
+        DATETIME received_at
+    }
+
+    modules {
+        TEXT name PK
+        BLOB data
+        TEXT sha256
+        TEXT version
+        TEXT platform PK
+        TEXT arch PK
+        DATETIME created_at
+        DATETIME updated_at
+    }
+
+    schema_version {
+        INTEGER version PK
+    }
+
+    operators ||--o{ tasks : "cria"
+    operators ||--o{ refresh_tokens : "possui"
+    agents ||--o{ tasks : "recebe"
+    agents ||--o{ exfiltrations : "origina"
+    exfiltrations ||--o{ exfil_chunks : "contem"
+</code></pre>
+<h2 id="tabelas-em-detalhe">Tabelas em Detalhe<a class="headerlink" href="#tabelas-em-detalhe" title="Permanent link">¶</a></h2>
+<h3 id="operators">operators<a class="headerlink" href="#operators" title="Permanent link">¶</a></h3>
+<p>Armazena operadores (usuarios humanos) que interagem com o teamserver.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>TEXT PK</td>
+<td>UUID hex de 32 chars (16 bytes random)</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>TEXT UNIQUE</td>
+<td>Nome de usuario (unico)</td>
+</tr>
+<tr>
+<td><code>password_hash</code></td>
+<td>TEXT</td>
+<td>Hash bcrypt da senha</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>TEXT</td>
+<td><code>"admin"</code>, <code>"operator"</code> ou <code>"viewer"</code></td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Timestamp de criacao</td>
+</tr>
+</tbody>
+</table>
+<h3 id="agents">agents<a class="headerlink" href="#agents" title="Permanent link">¶</a></h3>
+<p>Representa implants registrados com o teamserver.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>TEXT PK</td>
+<td>UUID hex de 32 chars</td>
+</tr>
+<tr>
+<td><code>hostname</code></td>
+<td>TEXT</td>
+<td>Hostname do target</td>
+</tr>
+<tr>
+<td><code>os</code></td>
+<td>TEXT</td>
+<td><code>"windows"</code>, <code>"linux"</code>, <code>"darwin"</code></td>
+</tr>
+<tr>
+<td><code>arch</code></td>
+<td>TEXT</td>
+<td><code>"amd64"</code>, <code>"arm64"</code>, <code>"386"</code></td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>TEXT</td>
+<td>Usuario do processo do implant</td>
+</tr>
+<tr>
+<td><code>internal_ip</code></td>
+<td>TEXT</td>
+<td>IP interno do target</td>
+</tr>
+<tr>
+<td><code>external_ip</code></td>
+<td>TEXT</td>
+<td>IP externo do target</td>
+</tr>
+<tr>
+<td><code>last_seen</code></td>
+<td>DATETIME</td>
+<td>Ultimo check-in bem sucedido</td>
+</tr>
+<tr>
+<td><code>sleep</code></td>
+<td>INTEGER</td>
+<td>Intervalo de check-in (ms)</td>
+</tr>
+<tr>
+<td><code>jitter</code></td>
+<td>INTEGER</td>
+<td>Porcentagem de jitter (0-100)</td>
+</tr>
+<tr>
+<td><code>transport</code></td>
+<td>TEXT</td>
+<td>Transport primario (<code>"https"</code>, <code>"dns"</code>, <code>"ws"</code>)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>TEXT</td>
+<td><code>"active"</code>, <code>"dead"</code>, <code>"disconnected"</code></td>
+</tr>
+<tr>
+<td><code>session_key</code></td>
+<td>TEXT</td>
+<td>Session key hex-encoded (persistida para sobreviver restart)</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>TEXT</td>
+<td>JSON array de tags (ex: <code>'["dc","prod"]'</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tasks">tasks<a class="headerlink" href="#tasks" title="Permanent link">¶</a></h3>
+<p>Cada task e uma instrucao enviada a um agent.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>TEXT PK</td>
+<td>UUID hex</td>
+</tr>
+<tr>
+<td><code>agent_id</code></td>
+<td>TEXT FK</td>
+<td>Referencia <code>agents(id)</code></td>
+</tr>
+<tr>
+<td><code>operator_id</code></td>
+<td>TEXT FK</td>
+<td>Referencia <code>operators(id)</code> (quem criou)</td>
+</tr>
+<tr>
+<td><code>module</code></td>
+<td>TEXT</td>
+<td>Nome do modulo a executar</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>TEXT</td>
+<td>Argumentos em JSON string</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>TEXT</td>
+<td><code>"pending"</code>, <code>"completed"</code>, <code>"failed"</code>, <code>"expired"</code>, <code>"cancelled"</code></td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td>TEXT</td>
+<td>Output retornado pelo modulo</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Quando a task foi criada</td>
+</tr>
+<tr>
+<td><code>completed_at</code></td>
+<td>DATETIME</td>
+<td>Quando o resultado chegou (NULL se pendente)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lifecycle de status:</strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>pending -&gt; dispatched (agent buscou no check-in)
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>        -&gt; completed  (resultado recebido)
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>        -&gt; failed     (modulo retornou erro)
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>        -&gt; expired    (Task Manager expirou por timeout)
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>        -&gt; cancelled  (operador cancelou)
+</code></pre></div>
+<h3 id="listeners">listeners<a class="headerlink" href="#listeners" title="Permanent link">¶</a></h3>
+<p>Configuracao de transport listeners.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>TEXT PK</td>
+<td>UUID hex</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>TEXT</td>
+<td><code>"https"</code>, <code>"dns"</code>, <code>"ws"</code>, ou plugin type</td>
+</tr>
+<tr>
+<td><code>bind_addr</code></td>
+<td>TEXT</td>
+<td>Endereco de bind (ex: <code>"0.0.0.0"</code>)</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>INTEGER</td>
+<td>Porta de escuta</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td>TEXT</td>
+<td>Nome do malleable profile (HTTPS only)</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>TEXT</td>
+<td><code>"running"</code>, <code>"stopped"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="logs-audit-log">logs (Audit Log)<a class="headerlink" href="#logs-audit-log" title="Permanent link">¶</a></h3>
+<p>Log de auditoria de todas as acoes.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER PK</td>
+<td>Auto-increment</td>
+</tr>
+<tr>
+<td><code>operator_id</code></td>
+<td>TEXT</td>
+<td>ID do operador (ou <code>"system"</code>)</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>TEXT</td>
+<td>Tipo de acao (ex: <code>"agent.register"</code>, <code>"shell.end"</code>, <code>"plugin.load"</code>)</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td>TEXT</td>
+<td>JSON com detalhes da acao</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>DATETIME</td>
+<td>Timestamp do evento</td>
+</tr>
+</tbody>
+</table>
+<h3 id="refresh_tokens">refresh_tokens<a class="headerlink" href="#refresh_tokens" title="Permanent link">¶</a></h3>
+<p>Tokens de refresh para rotacao de JWT.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>token_hash</code></td>
+<td>TEXT PK</td>
+<td>SHA-256 hex do token (nunca o token raw)</td>
+</tr>
+<tr>
+<td><code>operator_id</code></td>
+<td>TEXT FK</td>
+<td>Referencia <code>operators(id)</code></td>
+</tr>
+<tr>
+<td><code>expires_at</code></td>
+<td>DATETIME</td>
+<td>Expiracao do token</td>
+</tr>
+<tr>
+<td><code>revoked</code></td>
+<td>INTEGER</td>
+<td><code>0</code> = ativo, <code>1</code> = revogado</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Quando foi gerado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="staging_tokens">staging_tokens<a class="headerlink" href="#staging_tokens" title="Permanent link">¶</a></h3>
+<p>Tokens one-time para entrega de staged payloads.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>token</code></td>
+<td>TEXT PK</td>
+<td>Token unico (URL-safe)</td>
+</tr>
+<tr>
+<td><code>encrypted_payload</code></td>
+<td>BLOB</td>
+<td>Payload do implant cifrado com AES-256-GCM</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>DATETIME</td>
+<td>Timestamp de criacao</td>
+</tr>
+<tr>
+<td><code>used</code></td>
+<td>INTEGER</td>
+<td><code>0</code> = nao usado, <code>1</code> = consumido</td>
+</tr>
+</tbody>
+</table>
+<p>Tokens expiram apos 24 horas e sao limpos na inicializacao do server:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nx">store</span><span class="p">.</span><span class="nx">DeleteExpiredStagingTokens</span><span class="p">(</span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Hour</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="exfiltrations-exfil_chunks">exfiltrations + exfil_chunks<a class="headerlink" href="#exfiltrations-exfil_chunks" title="Permanent link">¶</a></h3>
+<p>Exfiltracao chunked de arquivos grandes.</p>
+<p><strong>exfiltrations</strong> (sessao de exfil):</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>TEXT PK</td>
+<td>UUID hex da sessao</td>
+</tr>
+<tr>
+<td><code>agent_id</code></td>
+<td>TEXT FK</td>
+<td>Agent que originou</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>TEXT</td>
+<td>Nome do arquivo original</td>
+</tr>
+<tr>
+<td><code>total_chunks</code></td>
+<td>INTEGER</td>
+<td>Total de chunks esperados</td>
+</tr>
+<tr>
+<td><code>received_chunks</code></td>
+<td>INTEGER</td>
+<td>Chunks recebidos ate agora</td>
+</tr>
+<tr>
+<td><code>total_bytes</code></td>
+<td>INTEGER</td>
+<td>Tamanho total do arquivo</td>
+</tr>
+<tr>
+<td><code>sha256_expected</code></td>
+<td>TEXT</td>
+<td>Hash esperado (enviado pelo agent)</td>
+</tr>
+<tr>
+<td><code>sha256_actual</code></td>
+<td>TEXT</td>
+<td>Hash calculado apos reassembly</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>TEXT</td>
+<td><code>"in_progress"</code>, <code>"completed"</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>exfil_chunks</strong> (dados de cada chunk):</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_id</code></td>
+<td>TEXT FK</td>
+<td>Referencia <code>exfiltrations(id)</code></td>
+</tr>
+<tr>
+<td><code>chunk_index</code></td>
+<td>INTEGER</td>
+<td>Indice ordenado do chunk</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>BLOB</td>
+<td>Dados binarios do chunk</td>
+</tr>
+<tr>
+<td><code>received_at</code></td>
+<td>DATETIME</td>
+<td>Timestamp de recebimento</td>
+</tr>
+</tbody>
+</table>
+<p>PK composta: <code>(session_id, chunk_index)</code> — garante que cada chunk e unico por sessao.</p>
+<p>A insercao de chunk e feita em <strong>transacao</strong> para manter <code>received_chunks</code> consistente:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Store</span><span class="p">)</span><span class="w"> </span><span class="nx">AddExfilChunk</span><span class="p">(</span><span class="nx">sessionID</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">chunkIndex</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Begin</span><span class="p">()</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Rollback</span><span class="p">()</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"INSERT INTO exfil_chunks (session_id, chunk_index, data) VALUES (?, ?, ?)"</span><span class="p">,</span><span class="w"> </span><span class="o">...</span><span class="p">)</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"UPDATE exfiltrations SET received_chunks = received_chunks + 1 WHERE id = ?"</span><span class="p">,</span><span class="w"> </span><span class="o">...</span><span class="p">)</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Commit</span><span class="p">()</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="modules">modules<a class="headerlink" href="#modules" title="Permanent link">¶</a></h3>
+<p>Modulos compilados para dynamic loading.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>TEXT</td>
+<td>Nome do modulo</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>BLOB</td>
+<td>Binario compilado</td>
+</tr>
+<tr>
+<td><code>sha256</code></td>
+<td>TEXT</td>
+<td>Hash SHA-256 do binario</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>TEXT</td>
+<td>Versao do modulo</td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td>TEXT</td>
+<td><code>"windows"</code>, <code>"linux"</code>, <code>"darwin"</code></td>
+</tr>
+<tr>
+<td><code>arch</code></td>
+<td>TEXT</td>
+<td><code>"amd64"</code>, <code>"arm64"</code></td>
+</tr>
+</tbody>
+</table>
+<p>PK composta: <code>(name, platform, arch)</code> — permite multiplas compilacoes do mesmo modulo.</p>
+<h3 id="schema_version">schema_version<a class="headerlink" href="#schema_version" title="Permanent link">¶</a></h3>
+<p>Controle de versao do schema para migracao incremental.</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td>INTEGER PK</td>
+<td>Numero da migracao aplicada</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sistema-de-migrations">Sistema de Migrations<a class="headerlink" href="#sistema-de-migrations" title="Permanent link">¶</a></h2>
+<p>O Wolfgang usa um sistema de migracoes sequenciais baseado em DDL statements:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// pkg/storage/storage.go</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">migrations</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="c1">// M1: Operators</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS operators (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="c1">// M2: Agents</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS agents (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">    </span><span class="c1">// M3: Tasks</span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS tasks (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="c1">// M4: Listeners</span>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS listeners (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">    </span><span class="c1">// M5: Logs</span>
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS logs (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">    </span><span class="c1">// M6: Refresh tokens</span>
+<a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS refresh_tokens (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">    </span><span class="c1">// M7: Add session_key to agents</span>
+<a href="#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">    </span><span class="s">`ALTER TABLE agents ADD COLUMN session_key TEXT NOT NULL DEFAULT ''`</span><span class="p">,</span>
+<a href="#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">    </span><span class="c1">// M8: Staging tokens</span>
+<a href="#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS staging_tokens (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">    </span><span class="c1">// M9-M10: Exfiltrations</span>
+<a href="#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS exfiltrations (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS exfil_chunks (...)`</span><span class="p">,</span>
+<a href="#__codelineno-4-22" id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">    </span><span class="c1">// M11: Agent tags</span>
+<a href="#__codelineno-4-23" id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">    </span><span class="s">`ALTER TABLE agents ADD COLUMN tags TEXT NOT NULL DEFAULT '[]'`</span><span class="p">,</span>
+<a href="#__codelineno-4-24" id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span><span class="c1">// M12-M13: Modules (recreate with composite PK)</span>
+<a href="#__codelineno-4-25" id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">    </span><span class="s">`DROP TABLE IF EXISTS modules`</span><span class="p">,</span>
+<a href="#__codelineno-4-26" id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">    </span><span class="s">`CREATE TABLE IF NOT EXISTS modules (... PRIMARY KEY (name, platform, arch))`</span><span class="p">,</span>
+<a href="#__codelineno-4-27" id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="p">}</span>
+</code></pre></div>
+<p>O sistema e <strong>forward-only</strong>: cada migracao tem um numero sequencial, e o <code>schema_version</code> table rastreia qual foi a ultima aplicada.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Store</span><span class="p">)</span><span class="w"> </span><span class="nx">migrate</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="c1">// Cria tabela de controle</span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">`CREATE TABLE IF NOT EXISTS schema_version (version INTEGER PRIMARY KEY)`</span><span class="p">)</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="c1">// Le versao atual</span>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">currentVersion</span><span class="w"> </span><span class="kt">int</span>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">QueryRow</span><span class="p">(</span><span class="s">"SELECT COALESCE(MAX(version), 0) FROM schema_version"</span><span class="p">).</span><span class="nx">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">currentVersion</span><span class="p">)</span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="c1">// Aplica apenas migracoes novas</span>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">migrations</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">        </span><span class="nx">version</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">version</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">currentVersion</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">continue</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+<a href="#__codelineno-5-14" id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">        </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"INSERT INTO schema_version (version) VALUES (?)"</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">)</span>
+<a href="#__codelineno-5-15" id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-5-16" id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="p">}</span>
+</code></pre></div>
+<p>O tratamento de <code>ALTER TABLE</code> duplicado (quando a coluna ja existe) e feito gracefully:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">Contains</span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span><span class="w"> </span><span class="s">"duplicate column"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="c1">// Registra versao mesmo assim (idempotente)</span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"INSERT INTO schema_version (version) VALUES (?)"</span><span class="p">,</span><span class="w"> </span><span class="nx">version</span><span class="p">)</span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="k">continue</span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="padroes-de-query">Padroes de Query<a class="headerlink" href="#padroes-de-query" title="Permanent link">¶</a></h2>
+<h3 id="prepared-statements">Prepared Statements<a class="headerlink" href="#prepared-statements" title="Permanent link">¶</a></h3>
+<p>Todas as queries usam prepared statements com <code>?</code> placeholders para prevenir SQL injection:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">QueryRow</span><span class="p">(</span><span class="s">"SELECT ... FROM agents WHERE id = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"UPDATE agents SET status = ? WHERE id = ?"</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="id-generation">ID Generation<a class="headerlink" href="#id-generation" title="Permanent link">¶</a></h3>
+<p>IDs sao gerados com 16 bytes de <code>crypto/rand</code>, resultando em 32 hex chars:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">generateID</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="nx">b</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="c1">// 128 bits de entropia</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="nx">rand</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">hex</span><span class="p">.</span><span class="nx">EncodeToString</span><span class="p">(</span><span class="nx">b</span><span class="p">),</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">}</span>
+</code></pre></div>
+<p>Isso equivale a UUID v4 em termos de unicidade (2^128 possibilidades), mas sem os hifens.</p>
+<h3 id="transacoes">Transacoes<a class="headerlink" href="#transacoes" title="Permanent link">¶</a></h3>
+<p>Transacoes sao usadas quando multiplas operacoes precisam ser atomicas. O padrao e <code>Begin() + defer Rollback() + Commit()</code>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nx">tx</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">Begin</span><span class="p">()</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="k">defer</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Rollback</span><span class="p">()</span><span class="w"> </span><span class="c1">// safety net — rollback se Commit nao foi chamado</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="nx">tx</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"INSERT INTO exfil_chunks ..."</span><span class="p">)</span>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nx">tx</span><span class="p">.</span><span class="nx">Exec</span><span class="p">(</span><span class="s">"UPDATE exfiltrations SET received_chunks = received_chunks + 1 ..."</span><span class="p">)</span>
+<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>
+<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="k">return</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">Commit</span><span class="p">()</span><span class="w"> </span><span class="c1">// atomico</span>
+</code></pre></div>
+<h3 id="time-handling">Time Handling<a class="headerlink" href="#time-handling" title="Permanent link">¶</a></h3>
+<p>Timestamps do SQLite sao parseados com multiplos formatos para compatibilidade:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">parseTime</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">layout</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">        </span><span class="s">"2006-01-02T15:04:05Z"</span><span class="p">,</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">        </span><span class="s">"2006-01-02 15:04:05"</span><span class="p">,</span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">layout</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">t</span>
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">{}</span><span class="w"> </span><span class="c1">// zero value se nenhum formato bate</span>
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="backup-e-recovery">Backup e Recovery<a class="headerlink" href="#backup-e-recovery" title="Permanent link">¶</a></h2>
+<p>O SQLite em modo WAL produz tres arquivos:</p>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Conteudo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wolfgang.db</code></td>
+<td>Banco principal</td>
+</tr>
+<tr>
+<td><code>wolfgang.db-wal</code></td>
+<td>Write-Ahead Log (commits pendentes)</td>
+</tr>
+<tr>
+<td><code>wolfgang.db-shm</code></td>
+<td>Shared memory index</td>
+</tr>
+</tbody>
+</table>
+<p>Para backup seguro: copie os tres arquivos enquanto o server esta rodando (WAL garante consistencia de leitura), ou pare o server e copie apenas o <code>.db</code> (o WAL sera merged).</p>
+<h2 id="veja-tambem">Veja tambem<a class="headerlink" href="#veja-tambem" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../auth/">Autenticacao</a> — como operadores e tokens sao gerenciados</li>
+<li><a href="../modules/">Modulos</a> — tabela <code>modules</code> para dynamic loading</li>
+<li><a href="../overview/">Visao Geral</a> — por que SQLite foi escolhido</li>
+</ul>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

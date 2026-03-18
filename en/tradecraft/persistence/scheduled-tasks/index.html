@@ -1,0 +1,1783 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for the Wolfgang C2 Framework" name="description"/>
+<link href="../windows-registry/" rel="prev"/>
+<link href="../linux-cron/" rel="next"/>
+<link href="../../../../tradecraft/persistence/scheduled-tasks/" hreflang="pt-BR" rel="alternate"/>
+<link href="./" hreflang="en" rel="alternate"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
+<title>Scheduled Tasks - Wolfgang C2 Framework</title>
+<link href="../../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#scheduled-tasks">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="../../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Wolfgang C2 Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Scheduled Tasks
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../../../../tradecraft/persistence/scheduled-tasks/" hreflang="pt-BR">
+              Português
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="en">
+              English
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../getting-started/">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../operator-guide/">
+          
+  
+  
+    
+  
+  Operator Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../architecture/">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../developer-guide/">
+          
+  
+  
+    
+  
+  Developer Guide
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../../">
+          
+  
+  
+    
+  
+  Tradecraft
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../modules/">
+          
+  
+  
+    
+  
+  Module Catalog
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../api/">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="../../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Wolfgang C2 Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../getting-started/quickstart/">
+<span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../getting-started/first-implant/">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../getting-started/first-operation/">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../getting-started/next-steps/">
+<span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../operator-guide/">
+<span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operator Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/server-setup/">
+<span class="md-ellipsis">
+    
+  
+    Server Setup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/listeners/">
+<span class="md-ellipsis">
+    
+  
+    Listeners
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/implant-generation/">
+<span class="md-ellipsis">
+    
+  
+    Implant Generation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/cli-reference/">
+<span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/agent-management/">
+<span class="md-ellipsis">
+    
+  
+    Agent Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/task-system/">
+<span class="md-ellipsis">
+    
+  
+    Task System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/exfiltration/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/redirectors/">
+<span class="md-ellipsis">
+    
+  
+    Redirectors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../operator-guide/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/protocol/">
+<span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/crypto/">
+<span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/transport/">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/storage/">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/auth/">
+<span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../architecture/implant-internals/">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../developer-guide/">
+<span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer-guide/project-structure/">
+<span class="md-ellipsis">
+    
+  
+    Project Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer-guide/adding-modules/">
+<span class="md-ellipsis">
+    
+  
+    Adding Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer-guide/adding-transports/">
+<span class="md-ellipsis">
+    
+  
+    Adding Transports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer-guide/plugin-sdk/">
+<span class="md-ellipsis">
+    
+  
+    Plugin SDK
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer-guide/testing/">
+<span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../developer-guide/build-system/">
+<span class="md-ellipsis">
+    
+  
+    Build System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Tradecraft
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradecraft
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Evasion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/amsi-bypass/">
+<span class="md-ellipsis">
+    
+  
+    AMSI Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/etw-bypass/">
+<span class="md-ellipsis">
+    
+  
+    ETW Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/sandbox-detection/">
+<span class="md-ellipsis">
+    
+  
+    Sandbox Detection
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/sleep-obfuscation/">
+<span class="md-ellipsis">
+    
+  
+    Sleep Obfuscation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/direct-syscalls/">
+<span class="md-ellipsis">
+    
+  
+    Direct Syscalls
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/memory-encryption/">
+<span class="md-ellipsis">
+    
+  
+    Memory Encryption
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../evasion/hwbp-bypass/">
+<span class="md-ellipsis">
+    
+  
+    HWBP Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../injection/">
+<span class="md-ellipsis">
+    
+  
+    Injection
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Injection
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../injection/process-hollowing/">
+<span class="md-ellipsis">
+    
+  
+    Process Hollowing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../injection/earlybird-apc/">
+<span class="md-ellipsis">
+    
+  
+    EarlyBird APC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../injection/module-stomping/">
+<span class="md-ellipsis">
+    
+  
+    Module Stomping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../injection/reflective-loading/">
+<span class="md-ellipsis">
+    
+  
+    Reflective Loading
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../credential-access/">
+<span class="md-ellipsis">
+    
+  
+    Credential Access
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Credential Access
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../credential-access/lsass-dumping/">
+<span class="md-ellipsis">
+    
+  
+    LSASS Dumping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../credential-access/registry-hives/">
+<span class="md-ellipsis">
+    
+  
+    Registry Hives
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../credential-access/kerberoasting/">
+<span class="md-ellipsis">
+    
+  
+    Kerberoasting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../credential-access/vault-extraction/">
+<span class="md-ellipsis">
+    
+  
+    Vault Extraction
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_6_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Persistence
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../windows-registry/">
+<span class="md-ellipsis">
+    
+  
+    Windows Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#o-que-e">
+<span class="md-ellipsis">
+      
+        O que é
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#por-que-funciona">
+<span class="md-ellipsis">
+      
+        Por que funciona
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implementacao-no-wolfgang">
+<span class="md-ellipsis">
+      
+        Implementação no Wolfgang
+      
+    </span>
+</a>
+<nav aria-label="Implementação no Wolfgang" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#triggers-suportados">
+<span class="md-ellipsis">
+      
+        Triggers suportados
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flags-importantes">
+<span class="md-ellipsis">
+      
+        Flags importantes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#naming">
+<span class="md-ellipsis">
+      
+        Naming
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-context">
+<span class="md-ellipsis">
+      
+        Security Context
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fluxo-de-execucao">
+<span class="md-ellipsis">
+      
+        Fluxo de Execução
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#consideracoes-operacionais">
+<span class="md-ellipsis">
+      
+        Considerações Operacionais
+      
+    </span>
+</a>
+<nav aria-label="Considerações Operacionais" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schtasksexe-vs-com-api">
+<span class="md-ellipsis">
+      
+        schtasks.exe vs COM API
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cleanup">
+<span class="md-ellipsis">
+      
+        Cleanup
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sobrevivencia">
+<span class="md-ellipsis">
+      
+        Sobrevivência
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deteccao">
+<span class="md-ellipsis">
+      
+        Detecção
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mitre-attck">
+<span class="md-ellipsis">
+      
+        MITRE ATT&amp;CK
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veja-tambem">
+<span class="md-ellipsis">
+      
+        Veja também
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../linux-cron/">
+<span class="md-ellipsis">
+    
+  
+    Linux Cron
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../macos-launchd/">
+<span class="md-ellipsis">
+    
+  
+    macOS Launchd
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../lateral-movement/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lateral Movement
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lateral-movement/port-forwarding/">
+<span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lateral-movement/socks-proxy/">
+<span class="md-ellipsis">
+    
+  
+    SOCKS Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lateral-movement/pivot-chains/">
+<span class="md-ellipsis">
+    
+  
+    Pivot Chains
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../lateral-movement/remote-execution/">
+<span class="md-ellipsis">
+    
+  
+    Remote Execution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../modules/">
+<span class="md-ellipsis">
+    
+  
+    Module Catalog
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Module Catalog
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/shell/">
+<span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/fileops/">
+<span class="md-ellipsis">
+    
+  
+    File Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/recon/">
+<span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/persist/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/lateral/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/credential/">
+<span class="md-ellipsis">
+    
+  
+    Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../modules/exfil/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../../api/">
+<span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="scheduled-tasks">Scheduled Tasks<a class="headerlink" href="#scheduled-tasks" title="Permanent link">¶</a></h1>
+<h2 id="o-que-e">O que é<a class="headerlink" href="#o-que-e" title="Permanent link">¶</a></h2>
+<p>O Task Scheduler do Windows permite agendar a execução de programas com base em
+triggers (horário, logon, evento do sistema, idle, etc.). É o mecanismo de
+auto-start mais flexível do Windows, usado por atualizações do sistema, backups,
+e manutenção automatizada.</p>
+<p>Para persistência, scheduled tasks oferecem vantagens sobre Run keys: suportam
+múltiplos triggers, podem rodar como SYSTEM (sem sessão de usuário), e sobrevivem
+a logoffs (não apenas reboots).</p>
+<h2 id="por-que-funciona">Por que funciona<a class="headerlink" href="#por-que-funciona" title="Permanent link">¶</a></h2>
+<p>O Task Scheduler é um serviço de sistema (<code>Schedule</code>) que roda como SYSTEM e
+processa tarefas definidas em XML. As tarefas são armazenadas em:</p>
+<ul>
+<li><code>C:\Windows\System32\Tasks\</code> (arquivos XML)</li>
+<li><code>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\</code> (metadados)</li>
+</ul>
+<p>Quando um trigger é ativado, o serviço executa a ação definida na tarefa. O
+processo filho herda o security context configurado (conta do usuário ou SYSTEM).</p>
+<p>Há duas formas de criar tarefas:</p>
+<ol>
+<li><strong>schtasks.exe</strong>: Command-line tool. Mais simples, mas gera eventos de processo.</li>
+<li><strong>COM API (ITaskService)</strong>: Criação programática sem spawnar processos filhos.</li>
+</ol>
+<p>O Wolfgang usa <code>schtasks.exe</code> pela simplicidade e compatibilidade universal.</p>
+<h2 id="implementacao-no-wolfgang">Implementação no Wolfgang<a class="headerlink" href="#implementacao-no-wolfgang" title="Permanent link">¶</a></h2>
+<p>O módulo (<code>pkg/module/persist/schtask_windows.go</code>) cria tarefas via <code>schtasks.exe</code>
+com três tipos de trigger:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">platformCreateSchTask</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">exePath</span><span class="p">,</span><span class="w"> </span><span class="nx">trigger</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">scheduleArgs</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">trigger</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"onlogon"</span><span class="p">:</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="nx">scheduleArgs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">            </span><span class="s">"/Create"</span><span class="p">,</span><span class="w"> </span><span class="s">"/F"</span><span class="p">,</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="s">"/TN"</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">            </span><span class="s">"/TR"</span><span class="p">,</span><span class="w"> </span><span class="nx">exePath</span><span class="p">,</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">            </span><span class="s">"/SC"</span><span class="p">,</span><span class="w"> </span><span class="s">"ONLOGON"</span><span class="p">,</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="s">"/RL"</span><span class="p">,</span><span class="w"> </span><span class="s">"HIGHEST"</span><span class="p">,</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"daily"</span><span class="p">:</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">        </span><span class="nx">scheduleArgs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">            </span><span class="s">"/Create"</span><span class="p">,</span><span class="w"> </span><span class="s">"/F"</span><span class="p">,</span>
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">            </span><span class="s">"/TN"</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">            </span><span class="s">"/TR"</span><span class="p">,</span><span class="w"> </span><span class="nx">exePath</span><span class="p">,</span>
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">            </span><span class="s">"/SC"</span><span class="p">,</span><span class="w"> </span><span class="s">"DAILY"</span><span class="p">,</span>
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">            </span><span class="s">"/ST"</span><span class="p">,</span><span class="w"> </span><span class="s">"09:00"</span><span class="p">,</span>
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">            </span><span class="s">"/RL"</span><span class="p">,</span><span class="w"> </span><span class="s">"HIGHEST"</span><span class="p">,</span>
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"hourly"</span><span class="p">:</span>
+<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">        </span><span class="nx">scheduleArgs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
+<a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="w">            </span><span class="s">"/Create"</span><span class="p">,</span><span class="w"> </span><span class="s">"/F"</span><span class="p">,</span>
+<a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">            </span><span class="s">"/TN"</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span>
+<a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">            </span><span class="s">"/TR"</span><span class="p">,</span><span class="w"> </span><span class="nx">exePath</span><span class="p">,</span>
+<a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="w">            </span><span class="s">"/SC"</span><span class="p">,</span><span class="w"> </span><span class="s">"HOURLY"</span><span class="p">,</span>
+<a href="#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">            </span><span class="s">"/RL"</span><span class="p">,</span><span class="w"> </span><span class="s">"HIGHEST"</span><span class="p">,</span>
+<a href="#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="k">default</span><span class="p">:</span>
+<a href="#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"unsupported trigger: %s"</span><span class="p">,</span><span class="w"> </span><span class="nx">trigger</span><span class="p">)</span>
+<a href="#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a>
+<a href="#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="nx">cmd</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">"schtasks.exe"</span><span class="p">,</span><span class="w"> </span><span class="nx">scheduleArgs</span><span class="o">...</span><span class="p">)</span>
+<a href="#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="nx">output</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cmd</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+<a href="#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"schtasks create failed: %s: %w"</span><span class="p">,</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">output</span><span class="p">),</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<a href="#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="triggers-suportados">Triggers suportados<a class="headerlink" href="#triggers-suportados" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Parâmetro</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>onlogon</code></td>
+<td><code>/SC ONLOGON</code></td>
+<td>Executa a cada logon de qualquer usuário</td>
+</tr>
+<tr>
+<td><code>daily</code></td>
+<td><code>/SC DAILY /ST 09:00</code></td>
+<td>Executa diariamente às 09:00</td>
+</tr>
+<tr>
+<td><code>hourly</code></td>
+<td><code>/SC HOURLY</code></td>
+<td>Executa a cada hora</td>
+</tr>
+</tbody>
+</table>
+<h3 id="flags-importantes">Flags importantes<a class="headerlink" href="#flags-importantes" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>/F</code>: Force -- sobrescreve tarefa existente com o mesmo nome</li>
+<li><code>/RL HIGHEST</code>: Run Level -- executa com o nível de privilégio mais alto disponível</li>
+<li><code>/TN</code>: Task Name -- nome da tarefa no Task Scheduler</li>
+</ul>
+<h3 id="naming">Naming<a class="headerlink" href="#naming" title="Permanent link">¶</a></h3>
+<p>Assim como nas Run keys, o nome da tarefa deve se mimetizar com tarefas legítimas.
+Exemplos:</p>
+<ul>
+<li><code>\Microsoft\Windows\WindowsUpdate\UpdateCheck</code></li>
+<li><code>\Microsoft\Office\OfficeBackgroundTaskHandlerRegistration</code></li>
+<li><code>OneDrive Standalone Update Task</code></li>
+</ul>
+<h3 id="security-context">Security Context<a class="headerlink" href="#security-context" title="Permanent link">¶</a></h3>
+<p>Com <code>/RL HIGHEST</code>, a tarefa executa com o token mais elevado disponível:</p>
+<ul>
+<li>Se o usuário é administrador: executa com token elevado (equivalente a "Run as Administrator")</li>
+<li>Se configurada para SYSTEM: executa como NT AUTHORITY\SYSTEM</li>
+</ul>
+<h2 id="fluxo-de-execucao">Fluxo de Execução<a class="headerlink" href="#fluxo-de-execucao" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    START([persist schtask]) --&gt; ARGS["Parâmetros:<br/>name, exePath, trigger"]
+    ARGS --&gt; TRIGGER{Trigger type?}
+
+    TRIGGER --&gt;|onlogon| ONLOGON["/SC ONLOGON"]
+    TRIGGER --&gt;|daily| DAILY["/SC DAILY /ST 09:00"]
+    TRIGGER --&gt;|hourly| HOURLY["/SC HOURLY"]
+
+    ONLOGON --&gt; CREATE["schtasks.exe /Create /F<br/>/TN name /TR exePath<br/>/RL HIGHEST"]
+    DAILY --&gt; CREATE
+    HOURLY --&gt; CREATE
+
+    CREATE --&gt; SVCHOST["Tarefa registrada no<br/>Task Scheduler service"]
+
+    SVCHOST --&gt; WAIT["Aguarda trigger..."]
+    WAIT --&gt; FIRE["Trigger ativado"]
+    FIRE --&gt; EXEC["svchost.exe → implant"]
+    EXEC --&gt; ACTIVE["Implant ativo"]
+
+    style CREATE fill:#e74c3c,color:#fff
+</code></pre>
+<h2 id="consideracoes-operacionais">Considerações Operacionais<a class="headerlink" href="#consideracoes-operacionais" title="Permanent link">¶</a></h2>
+<h3 id="schtasksexe-vs-com-api">schtasks.exe vs COM API<a class="headerlink" href="#schtasksexe-vs-com-api" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>schtasks.exe</th>
+<th>COM API (ITaskService)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processo filho</td>
+<td>Sim (schtasks.exe no tree)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>Complexidade</td>
+<td>Baixa</td>
+<td>Alta (COM boilerplate)</td>
+</tr>
+<tr>
+<td>Logging</td>
+<td>Event ID 4698 + Process Create</td>
+<td>Event ID 4698</td>
+</tr>
+<tr>
+<td>Compatibilidade</td>
+<td>Universal</td>
+<td>Requer COM initialization</td>
+</tr>
+</tbody>
+</table>
+<p>O Wolfgang atualmente usa <code>schtasks.exe</code>. A COM API seria mais furtiva por não
+spawnar um processo filho observável, mas adiciona complexidade significativa
+ao código.</p>
+<h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">¶</a></h3>
+<p>Para remover a tarefa ao final da operação:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>schtasks.exe<span class="w"> </span>/Delete<span class="w"> </span>/TN<span class="w"> </span><span class="s2">"TaskName"</span><span class="w"> </span>/F
+</code></pre></div>
+<h3 id="sobrevivencia">Sobrevivência<a class="headerlink" href="#sobrevivencia" title="Permanent link">¶</a></h3>
+<p>Scheduled tasks sobrevivem a:</p>
+<ul>
+<li>Reboot</li>
+<li>Logoff/logon</li>
+<li>Password changes do usuário (se configurada para SYSTEM)</li>
+<li>Atualizações do Windows</li>
+</ul>
+<h2 id="deteccao">Detecção<a class="headerlink" href="#deteccao" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>IOC</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Event ID 4698 (Security log)</td>
+<td>Criação de scheduled task</td>
+</tr>
+<tr>
+<td>Event ID 106 (Task Scheduler log)</td>
+<td>Tarefa registrada</td>
+</tr>
+<tr>
+<td>Event ID 200/201 (Task Scheduler log)</td>
+<td>Execução de tarefa</td>
+</tr>
+<tr>
+<td>Sysmon Event ID 1</td>
+<td>Processo <code>schtasks.exe</code> com argumentos <code>/Create</code></td>
+</tr>
+<tr>
+<td>Arquivo XML em <code>C:\Windows\System32\Tasks\</code></td>
+<td>Definição da tarefa em disco</td>
+</tr>
+</tbody>
+</table>
+<p>Mitigações:</p>
+<ul>
+<li><strong>Monitorar criação de tarefas</strong>: Alertar sobre Event ID 4698 para tarefas não-whitelist</li>
+<li><strong>Restringir schtasks.exe</strong>: AppLocker rule para limitar quem pode criar tarefas</li>
+<li><strong>Auditar Tasks folder</strong>: Detectar arquivos XML novos ou modificados</li>
+</ul>
+<h2 id="mitre-attck">MITRE ATT&amp;CK<a class="headerlink" href="#mitre-attck" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tactic</strong></td>
+<td>Execution, Persistence, Privilege Escalation</td>
+</tr>
+<tr>
+<td><strong>Technique</strong></td>
+<td>T1053.005 - Scheduled Task/Job: Scheduled Task</td>
+</tr>
+<tr>
+<td><strong>Platforms</strong></td>
+<td>Windows</td>
+</tr>
+<tr>
+<td><strong>Permissions Required</strong></td>
+<td>Administrator (para SYSTEM), User (para user-level)</td>
+</tr>
+<tr>
+<td><strong>Data Sources</strong></td>
+<td>Process Creation, Scheduled Job, Command Execution</td>
+</tr>
+</tbody>
+</table>
+<h2 id="veja-tambem">Veja também<a class="headerlink" href="#veja-tambem" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../windows-registry/">Windows Registry</a> -- Alternativa mais simples com Run keys</li>
+<li><a href="../linux-cron/">Linux Cron</a> -- Equivalente em Linux</li>
+<li><a href="../macos-launchd/">macOS LaunchAgent</a> -- Equivalente em macOS</li>
+</ul>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

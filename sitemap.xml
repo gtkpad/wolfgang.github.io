@@ -1,0 +1,1025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>None./</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="None"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
+    </url>
+    <url>
+        <loc>Noneapi/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneapi/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/api/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/auth/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/auth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/auth/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/crypto/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/crypto/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/crypto/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/implant-internals/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/implant-internals/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/implant-internals/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/modules/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/modules/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/overview/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/overview/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/plugins/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/plugins/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/plugins/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/protocol/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/protocol/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/protocol/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/storage/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/storage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/storage/"/>
+    </url>
+    <url>
+        <loc>Nonearchitecture/transport/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/transport/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/transport/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/adding-modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/adding-modules/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/adding-modules/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/adding-transports/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/adding-transports/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/adding-transports/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/build-system/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/build-system/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/build-system/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/plugin-sdk/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/plugin-sdk/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/plugin-sdk/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/project-structure/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/project-structure/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/project-structure/"/>
+    </url>
+    <url>
+        <loc>Nonedeveloper-guide/testing/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/testing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/testing/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/first-implant/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/first-implant/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/first-implant/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/first-operation/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/first-operation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/first-operation/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/next-steps/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/next-steps/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/next-steps/"/>
+    </url>
+    <url>
+        <loc>Nonegetting-started/quickstart/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/quickstart/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/quickstart/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/credential/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/credential/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/credential/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/evasion/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/evasion/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/evasion/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/exfil/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/exfil/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/exfil/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/fileops/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/fileops/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/fileops/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/lateral/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/lateral/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/lateral/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/persist/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/persist/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/persist/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/recon/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/recon/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/recon/"/>
+    </url>
+    <url>
+        <loc>Nonemodules/shell/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/shell/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/shell/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/agent-management/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/agent-management/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/agent-management/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/cli-reference/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/cli-reference/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/cli-reference/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/exfiltration/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/exfiltration/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/exfiltration/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/implant-generation/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/implant-generation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/implant-generation/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/listeners/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/listeners/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/listeners/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/modules/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/modules/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/plugins/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/plugins/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/plugins/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/redirectors/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/redirectors/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/redirectors/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/server-setup/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/server-setup/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/server-setup/"/>
+    </url>
+    <url>
+        <loc>Noneoperator-guide/task-system/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/task-system/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/task-system/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/credential-access/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/credential-access/kerberoasting/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/kerberoasting/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/kerberoasting/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/credential-access/lsass-dumping/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/lsass-dumping/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/lsass-dumping/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/credential-access/registry-hives/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/registry-hives/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/registry-hives/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/credential-access/vault-extraction/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/vault-extraction/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/vault-extraction/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/amsi-bypass/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/amsi-bypass/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/amsi-bypass/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/direct-syscalls/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/direct-syscalls/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/direct-syscalls/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/etw-bypass/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/etw-bypass/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/etw-bypass/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/hwbp-bypass/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/hwbp-bypass/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/hwbp-bypass/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/memory-encryption/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/memory-encryption/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/memory-encryption/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/sandbox-detection/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/sandbox-detection/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/sandbox-detection/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/evasion/sleep-obfuscation/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/sleep-obfuscation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/sleep-obfuscation/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/injection/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/injection/earlybird-apc/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/earlybird-apc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/earlybird-apc/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/injection/module-stomping/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/module-stomping/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/module-stomping/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/injection/process-hollowing/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/process-hollowing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/process-hollowing/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/injection/reflective-loading/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/reflective-loading/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/reflective-loading/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/lateral-movement/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/lateral-movement/pivot-chains/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/pivot-chains/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/pivot-chains/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/lateral-movement/port-forwarding/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/port-forwarding/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/port-forwarding/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/lateral-movement/remote-execution/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/remote-execution/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/remote-execution/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/lateral-movement/socks-proxy/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/socks-proxy/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/socks-proxy/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/persistence/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/persistence/linux-cron/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/linux-cron/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/linux-cron/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/persistence/macos-launchd/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/macos-launchd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/macos-launchd/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/persistence/scheduled-tasks/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/scheduled-tasks/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/scheduled-tasks/"/>
+    </url>
+    <url>
+        <loc>Nonetradecraft/persistence/windows-registry/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/windows-registry/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/windows-registry/"/>
+    </url>
+    <url>
+        <loc>Noneen/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="None"/>
+    </url>
+    <url>
+        <loc>Noneen/api/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/api/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneapi/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/auth/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/auth/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/auth/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/crypto/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/crypto/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/crypto/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/implant-internals/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/implant-internals/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/implant-internals/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/modules/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/modules/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/overview/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/overview/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/overview/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/plugins/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/plugins/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/plugins/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/protocol/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/protocol/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/protocol/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/storage/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/storage/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/storage/"/>
+    </url>
+    <url>
+        <loc>Noneen/architecture/transport/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/architecture/transport/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonearchitecture/transport/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/adding-modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/adding-modules/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/adding-modules/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/adding-transports/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/adding-transports/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/adding-transports/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/build-system/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/build-system/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/build-system/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/plugin-sdk/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/plugin-sdk/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/plugin-sdk/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/project-structure/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/project-structure/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/project-structure/"/>
+    </url>
+    <url>
+        <loc>Noneen/developer-guide/testing/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/developer-guide/testing/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonedeveloper-guide/testing/"/>
+    </url>
+    <url>
+        <loc>Noneen/getting-started/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/"/>
+    </url>
+    <url>
+        <loc>Noneen/getting-started/first-implant/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/first-implant/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/first-implant/"/>
+    </url>
+    <url>
+        <loc>Noneen/getting-started/first-operation/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/first-operation/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/first-operation/"/>
+    </url>
+    <url>
+        <loc>Noneen/getting-started/next-steps/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/next-steps/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/next-steps/"/>
+    </url>
+    <url>
+        <loc>Noneen/getting-started/quickstart/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting-started/quickstart/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonegetting-started/quickstart/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/credential/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/credential/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/credential/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/evasion/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/evasion/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/evasion/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/exfil/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/exfil/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/exfil/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/fileops/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/fileops/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/fileops/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/lateral/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/lateral/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/lateral/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/persist/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/persist/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/persist/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/recon/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/recon/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/recon/"/>
+    </url>
+    <url>
+        <loc>Noneen/modules/shell/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/modules/shell/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonemodules/shell/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/agent-management/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/agent-management/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/agent-management/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/cli-reference/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/cli-reference/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/cli-reference/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/exfiltration/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/exfiltration/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/exfiltration/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/implant-generation/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/implant-generation/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/implant-generation/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/listeners/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/listeners/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/listeners/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/modules/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/modules/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/modules/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/plugins/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/plugins/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/plugins/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/redirectors/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/redirectors/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/redirectors/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/server-setup/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/server-setup/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/server-setup/"/>
+    </url>
+    <url>
+        <loc>Noneen/operator-guide/task-system/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/operator-guide/task-system/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Noneoperator-guide/task-system/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/credential-access/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/credential-access/kerberoasting/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/kerberoasting/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/kerberoasting/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/credential-access/lsass-dumping/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/lsass-dumping/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/lsass-dumping/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/credential-access/registry-hives/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/registry-hives/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/registry-hives/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/credential-access/vault-extraction/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/credential-access/vault-extraction/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/credential-access/vault-extraction/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/amsi-bypass/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/amsi-bypass/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/amsi-bypass/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/direct-syscalls/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/direct-syscalls/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/direct-syscalls/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/etw-bypass/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/etw-bypass/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/etw-bypass/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/hwbp-bypass/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/hwbp-bypass/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/hwbp-bypass/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/memory-encryption/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/memory-encryption/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/memory-encryption/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/sandbox-detection/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/sandbox-detection/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/sandbox-detection/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/evasion/sleep-obfuscation/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/evasion/sleep-obfuscation/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/evasion/sleep-obfuscation/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/injection/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/injection/earlybird-apc/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/earlybird-apc/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/earlybird-apc/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/injection/module-stomping/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/module-stomping/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/module-stomping/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/injection/process-hollowing/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/process-hollowing/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/process-hollowing/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/injection/reflective-loading/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/injection/reflective-loading/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/injection/reflective-loading/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/lateral-movement/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/lateral-movement/pivot-chains/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/pivot-chains/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/pivot-chains/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/lateral-movement/port-forwarding/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/port-forwarding/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/port-forwarding/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/lateral-movement/remote-execution/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/remote-execution/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/remote-execution/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/lateral-movement/socks-proxy/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/lateral-movement/socks-proxy/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/lateral-movement/socks-proxy/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/persistence/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/persistence/linux-cron/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/linux-cron/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/linux-cron/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/persistence/macos-launchd/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/macos-launchd/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/macos-launchd/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/persistence/scheduled-tasks/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/scheduled-tasks/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/scheduled-tasks/"/>
+    </url>
+    <url>
+        <loc>Noneen/tradecraft/persistence/windows-registry/</loc>
+        <lastmod>2026-03-18</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/tradecraft/persistence/windows-registry/"/>
+        <xhtml:link rel="alternate" hreflang="pt-BR" href="Nonetradecraft/persistence/windows-registry/"/>
+    </url>
+</urlset>
